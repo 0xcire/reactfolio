@@ -1,9 +1,8 @@
 # My Portfolio Website
 
-## Built with...
+## Currently built with...
 
 - Tailwind CSS
-  - Daisy UI
 - Framer Motion
 
 - TypeScript

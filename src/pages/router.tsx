@@ -1,13 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Home from './Home';
+import Portfolio from './Portfolio';
 import _404 from './_404';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home></Home>,
-    errorElement: <_404 message='page not found!'></_404>,
+    element: <Home />,
+    errorElement: <_404 />,
+  },
+  {
+    path: '/Portfolio',
+    element: <Portfolio />,
   },
 ]);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { LazyMotion, m, AnimatePresence, domAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';

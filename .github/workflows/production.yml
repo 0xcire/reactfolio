@@ -1,0 +1,40 @@
+# name of workflow
+name: 'ci-cd pipeline'
+
+# triggered on...
+on:
+  pull_request:
+    branches:
+      - main
+
+# actions
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+      # - name: Run tests
+      # - run: npm test
+      - name: Build file
+        run: npm run build
+
+      # to netlify
+      - name: Deploy prod to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './dist'
+          comment-on-commit: true

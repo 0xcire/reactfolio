@@ -8,7 +8,7 @@ function _404() {
 
   if (isRouteErrorResponse(error)) {
     return (
-      <div className='relative h-full grid place-items-center text-text-dark overflow-hidden'>
+      <div className='relative h-screen grid place-items-center text-text-dark overflow-hidden'>
         <div className='sm:text-center'>
           <h1 className='font-bold text-2xl'>Oops! {error.status}</h1>
           <p>{`Planet ${page} ${error.statusText}.`}</p>
@@ -24,7 +24,7 @@ function _404() {
     );
   } else if (error instanceof Error) {
     return (
-      <div className='relative h-full grid place-items-center text-text-dark overflow-hidden'>
+      <div className='relative h-screen grid place-items-center text-text-dark overflow-hidden'>
         <div className='sm:text-center'>
           <h1 className='font-bold text-2xl'>Oops! Unexpected Error</h1>
           <p>{error.message}</p>

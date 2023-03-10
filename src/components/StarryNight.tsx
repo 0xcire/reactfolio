@@ -7,7 +7,7 @@
 // adjust shootingStar container for 1440p/4K + displays
 
 import { LazyMotion, m, domAnimation } from 'framer-motion';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 const starVariants = {
   show: { opacity: 1 },
@@ -36,10 +36,10 @@ function StarryNight() {
   const randomPercentage = () => Math.floor(Math.random() * 101);
   const wishDelay = (index: number) => Math.random() * index * 5;
 
-  const getResizedDimensions = useCallback(() => {
+  const getResizedDimensions = () => {
     setWidth(Math.max(window.innerWidth));
     setHeight(Math.max(window.innerHeight));
-  }, []);
+  };
 
   useEffect(() => {
     setWidth(Math.max(window.innerWidth));
@@ -48,16 +48,17 @@ function StarryNight() {
     window.addEventListener('resize', getResizedDimensions);
 
     return () => window.removeEventListener('resize', getResizedDimensions);
-  }, [getResizedDimensions]);
+  }, []);
 
+  // drop-shadow-[0_0_20px_#465976]
   return (
     <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark'>
       <svg className='sky absolute w-full h-full'>
         <LazyMotion features={domAnimation}>
-          {[...Array(120)].map((star, index) => {
+          {[...Array(60)].map((star, index) => {
             return (
               <m.circle
-                className='star drop-shadow-[0_0_20px_#465976]'
+                className='star'
                 cx={randomStarX()}
                 cy={randomStarY()}
                 r={randomR()}
@@ -81,7 +82,7 @@ function StarryNight() {
       </svg>
       <div className='shootingStars absolute top-0 w-[150vw] sm:w-[120vw] lg:w-[115vw] xl:w-[100vw] 2xl:w-[80vw] h-[100vh] lg:h-[120vh] xl:h-[130vh] 2xl:h-[110vh] -rotate-[30deg] translate-x-[-20%] sm:translate-x-[-10%] lg:translate-x-[-5%] xl:translate-x-[2.5%] 2xl:translate-x-[12%] sm:translate-y-[0%] lg:translate-y-[-5%] xl:translate-y-[-5%] 2xl:translate-y-[-5%] overflow-hidden z-[-1]'>
         <LazyMotion features={domAnimation}>
-          {[...Array(40)].map((shootingStar, index) => {
+          {[...Array(10)].map((shootingStar, index) => {
             return (
               <m.div
                 key={index}

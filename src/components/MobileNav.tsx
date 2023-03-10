@@ -26,21 +26,45 @@ function MobileNav(props: MobileNavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = useCallback(() => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  }, [mobileMenuOpen]);
+  const toggleMenu = useCallback(
+    () => setMobileMenuOpen(!mobileMenuOpen),
+    [mobileMenuOpen]
+  );
 
-  const handleEscKey = useCallback(
-    (event: KeyboardEvent) => {
+  // const handleEscKey = useCallback(
+  //   (event: KeyboardEvent) => {
+  //     if (event.key === 'Escape') {
+  //       toggleMenu();
+  //     }
+  //   },
+  //   [toggleMenu]
+  // );
+
+  // const handleOutsideClick = useCallback(
+  //   (event: MouseEvent) => {
+  //     const target = event.target as HTMLElement;
+  //     if (mobileRef.current) {
+  //       if (
+  //         !mobileRef.current.contains(target) &&
+  //         !target.closest('.menu-btn')
+  //       ) {
+  //         toggleMenu();
+  //       } else {
+  //         return;
+  //       }
+  //     }
+  //   },
+  //   [toggleMenu]
+  // );
+
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         toggleMenu();
       }
-    },
-    [toggleMenu]
-  );
+    };
 
-  const handleOutsideClick = useCallback(
-    (event: MouseEvent) => {
+    const handleOutsideClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (mobileRef.current) {
         if (
@@ -52,11 +76,7 @@ function MobileNav(props: MobileNavProps) {
           return;
         }
       }
-    },
-    [toggleMenu]
-  );
-
-  useEffect(() => {
+    };
     document.addEventListener('keydown', handleEscKey);
     document.addEventListener('click', handleOutsideClick);
 
@@ -64,7 +84,7 @@ function MobileNav(props: MobileNavProps) {
       document.removeEventListener('keydown', handleEscKey);
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, [toggleMenu, handleEscKey, handleOutsideClick]);
+  }, [toggleMenu]);
 
   return (
     <>
@@ -131,7 +151,7 @@ function MobileNav(props: MobileNavProps) {
               exit={'closed'}
               transition={{ duration: 0.25 }}
               variants={navVariants}
-              className='absolute flex flex-col justify-end right-0 top-[100%] w-8/12 h-[calc(100vh-64px)] bg-[#401d2d44] text-text-dark z-10'
+              className='absolute flex flex-col justify-end right-0 top-[100%] w-6/12 h-[calc(100vh-64px)] bg-[rgb(29, 45, 68)] bg-[#1d2d44]/[0.85] text-text-dark z-10'
             >
               <div className='socials flex items-center justify-end mr-6 mb-4'>
                 <Link

@@ -17,7 +17,7 @@ function ProjectCard(props: CardProps) {
     <div className='card h-full flex flex-col justify-between rounded-md shadow-md shadow-[#121d2c] pb-4 my-6 lg:my-0'>
       <div className=''>
         <img
-          className='rounded-md h-full'
+          className='rounded-md max-h-[315px] w-full h-auto'
           src={props.image}
           alt={`${props.image}-img`}
           loading='lazy'
@@ -31,7 +31,7 @@ function ProjectCard(props: CardProps) {
         <p className='text-[14px]'>{props.description}</p>
       </div>
 
-      <div className='buttons flex justify-between mt-4 px-12'>
+      <div className='buttons flex justify-between my-4 px-12'>
         <Link
           className='flex items-center py-2 px-4 rounded-md bg-accent-dark text-center text-text-light'
           to={`${props.codeLink}`}

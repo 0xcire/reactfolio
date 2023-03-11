@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { LazyMotion, m, AnimatePresence, domAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { LazyMotion, m, AnimatePresence, domAnimation } from 'framer-motion';
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 
 const navVariants = {
@@ -22,40 +22,17 @@ type MobileNavProps = {
   links: string[];
 };
 
-function MobileNav(props: MobileNavProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+function MobileNav({ links }: MobileNavProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const mobileRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = useCallback(
-    () => setMobileMenuOpen(!mobileMenuOpen),
-    [mobileMenuOpen]
-  );
-
-  // const handleEscKey = useCallback(
-  //   (event: KeyboardEvent) => {
-  //     if (event.key === 'Escape') {
-  //       toggleMenu();
-  //     }
-  //   },
-  //   [toggleMenu]
-  // );
-
-  // const handleOutsideClick = useCallback(
-  //   (event: MouseEvent) => {
-  //     const target = event.target as HTMLElement;
-  //     if (mobileRef.current) {
-  //       if (
-  //         !mobileRef.current.contains(target) &&
-  //         !target.closest('.menu-btn')
-  //       ) {
-  //         toggleMenu();
-  //       } else {
-  //         return;
-  //       }
-  //     }
-  //   },
-  //   [toggleMenu]
-  // );
+  const toggleMenu = useCallback(() => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    // TODO: come back to this if i change Header functionality
+    !mobileMenuOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
@@ -169,8 +146,13 @@ function MobileNav(props: MobileNavProps) {
                 </Link>
               </div>
               <nav className='flex flex-col text-right  mb-10'>
-                {props.links.map((link, index) => (
-                  <Link className='py-2 px-6' key={index} to={`/${link}`}>
+                {links.map((link, index) => (
+                  <Link
+                    className='py-2 px-6'
+                    key={index}
+                    to={`/${link}`}
+                    onClick={toggleMenu}
+                  >
                     {link}
                   </Link>
                 ))}

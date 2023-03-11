@@ -1,16 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const links: string[] = ['Home', 'Portfolio', 'About', 'Contact'];
 
-type FooterProps = {
-  links: boolean;
-};
+function Footer() {
+  const path = useLocation().pathname;
 
-function Footer(props: FooterProps) {
   return (
-    <footer className='text-text-dark text-center py-6 lg:py-12 shadow-md text-[11px]'>
+    <footer className='text-text-dark bg-primary-dark text-center py-6 lg:py-12 shadow-md text-[11px]'>
       <>
-        {props.links && (
+        {path !== '/' ? (
           <nav className='mb-2'>
             {links.map((link, index) => {
               link = link === 'Home' ? '' : link;
@@ -21,9 +19,9 @@ function Footer(props: FooterProps) {
               );
             })}
           </nav>
-        )}
+        ) : null}
 
-        <div>&copy; EC 2023</div>
+        <div>&copy; 2023 EC</div>
       </>
     </footer>
   );

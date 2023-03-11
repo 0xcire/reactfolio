@@ -5,11 +5,11 @@ type LinkBtnProps = {
   text: string;
 };
 
-function LinkBtn(props: LinkBtnProps) {
+function LinkBtn({ path, text }: LinkBtnProps) {
   const navigate = useNavigate();
   return (
-    <button className='' onClick={() => navigate(`${props.path}`)}>
-      {props.text}
+    <button className='' onClick={() => navigate(`${path}`)}>
+      {text}
     </button>
   );
 }

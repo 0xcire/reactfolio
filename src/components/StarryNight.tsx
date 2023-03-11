@@ -23,8 +23,8 @@ const wishVariants = {
 };
 
 function StarryNight() {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
 
   const randomStarX = () =>
     Math.floor(Math.random() * Math.floor(width)).toString();
@@ -41,6 +41,7 @@ function StarryNight() {
     setHeight(Math.max(window.innerHeight));
   };
 
+  //TODO: handle math.max uselessness
   useEffect(() => {
     setWidth(Math.max(window.innerWidth));
     setHeight(Math.max(window.innerHeight));
@@ -52,12 +53,13 @@ function StarryNight() {
 
   // drop-shadow-[0_0_20px_#465976]
   return (
-    <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark'>
+    <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark overflow-hidden'>
       <svg className='sky absolute w-full h-full'>
         <LazyMotion features={domAnimation}>
-          {[...Array(60)].map((star, index) => {
+          {[...Array(60)].map((_star, index) => {
             return (
               <m.circle
+                key={index}
                 className='star'
                 cx={randomStarX()}
                 cy={randomStarY()}
@@ -65,7 +67,6 @@ function StarryNight() {
                 stroke='none'
                 strokeWidth='0'
                 fill='#f0ebd8'
-                key={index}
                 initial={'hidden'}
                 animate={'show'}
                 transition={{
@@ -80,9 +81,12 @@ function StarryNight() {
           })}
         </LazyMotion>
       </svg>
+      {/* TODO: is a potential perf optimization to create svg lines and animate
+      the path drawing? could potentially solve weird off screen rotated parent div
+      conundrum*/}
       <div className='shootingStars absolute top-0 w-[150vw] sm:w-[120vw] lg:w-[115vw] xl:w-[100vw] 2xl:w-[80vw] h-[100vh] lg:h-[120vh] xl:h-[130vh] 2xl:h-[110vh] -rotate-[30deg] translate-x-[-20%] sm:translate-x-[-10%] lg:translate-x-[-5%] xl:translate-x-[2.5%] 2xl:translate-x-[12%] sm:translate-y-[0%] lg:translate-y-[-5%] xl:translate-y-[-5%] 2xl:translate-y-[-5%] overflow-hidden z-[-1]'>
         <LazyMotion features={domAnimation}>
-          {[...Array(10)].map((shootingStar, index) => {
+          {[...Array(10)].map((_shootingStar, index) => {
             return (
               <m.div
                 key={index}

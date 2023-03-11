@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import MobileNav from './MobileNav';
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 // [] add to data directory
 const links: string[] = ['Portfolio', 'About', 'Contact'];
 
 function Header() {
-  // const [isOverlapping, setOverlapping] = useState(false);
   const headingRef = useRef<HTMLDivElement>(null);
+  const path = useLocation().pathname;
 
+  // TODO: still debating on this, depends on how involved about page is i guess
   // throttle to not fire so many events?
   // const handleScroll = () => {
   //   const header = headingRef.current?.getBoundingClientRect();
@@ -38,7 +40,9 @@ function Header() {
   return (
     <header
       ref={headingRef}
-      className='relative flex justify-between items-center w-full px-6 sm:px-12 lg:px-28 py-4 sm:py-8 text-primary-light dark:text-text-dark'
+      className={`relative flex justify-between items-center w-full px-6 sm:px-12 lg:px-28 py-4 sm:py-8 text-primary-light dark:text-text-dark ${
+        path === '/' ? 'bg-transparent' : 'bg-primary-dark'
+      }`}
     >
       <h1 className='font-bold text-2xl'>
         <Link to={`/`}>EC</Link>

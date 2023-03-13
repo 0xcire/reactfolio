@@ -29,9 +29,10 @@ function MobileNav({ links }: MobileNavProps) {
   const toggleMenu = useCallback(() => {
     setMobileMenuOpen(!mobileMenuOpen);
     // TODO: come back to this if i change Header functionality
-    !mobileMenuOpen
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'unset');
+    // TODO: also weird vh behavior on some browsers, lvh/svh possible solutions
+    // !mobileMenuOpen
+    //   ? (document.body.style.overflow = 'hidden')
+    //   : (document.body.style.overflow = 'unset');
   }, [mobileMenuOpen]);
 
   useEffect(() => {

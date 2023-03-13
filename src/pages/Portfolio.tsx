@@ -1,29 +1,29 @@
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
-import baffle from 'baffle';
+// import baffle from 'baffle';
 import ProjectCard from '../components/ProjectCard';
 
 //TODO: add to data.ts
-import cardle from '../assets/images/cardle.png';
-import todo from '../assets/images/todo.png';
-import ecfolio from '../assets/images/ecfolio.png';
-const characters = [
-  '█',
-  '▓',
-  '▒',
-  '░',
-  '█',
-  '▓',
-  '▒',
-  '░',
-  '█',
-  '▓',
-  '▒',
-  '░',
-  '<',
-  '>',
-  '/',
-];
+import cardle from '../assets/images/cardle.webp';
+import todo from '../assets/images/todo.webp';
+import ecfolio from '../assets/images/ecfolio.webp';
+// const characters = [
+//   '█',
+//   '▓',
+//   '▒',
+//   '░',
+//   '█',
+//   '▓',
+//   '▒',
+//   '░',
+//   '█',
+//   '▓',
+//   '▒',
+//   '░',
+//   '<',
+//   '>',
+//   '/',
+// ];
 
 const transitionVariants = {
   initial: { opacity: 0 },
@@ -32,20 +32,20 @@ const transitionVariants = {
 };
 
 function Portfolio() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  // const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const animateHeading = () => {
-    const target = baffle(headingRef.current);
-    target.set({
-      characters: characters,
-    });
-    target.start();
-    setTimeout(() => target.reveal(), 750);
-  };
+  // const animateHeading = () => {
+  //   const target = baffle(headingRef.current);
+  //   target.set({
+  //     characters: characters,
+  //   });
+  //   target.start();
+  //   setTimeout(() => target.reveal(), 750);
+  // };
 
-  useEffect(() => {
-    animateHeading();
-  }, []);
+  // useEffect(() => {
+  //   animateHeading();
+  // }, []);
 
   // extract data out to 'portfolio.ts' as objects
   return (
@@ -57,14 +57,19 @@ function Portfolio() {
         animate={'animate'}
         exit={'exit'}
       >
-        <section className='portfolio py-12 px-6 lg:px-28 h-full'>
-          <h1
-            className='text-2xl 2xl:text-[34px] leading-loose font-bold sm:text-center'
-            ref={headingRef}
-          >
-            Portfolio
-          </h1>
-          <div className='h-full sm:w-8/12 sm:mx-auto lg:w-full lg:grid grid-cols-2 lg:gap-8 2xl:grid-cols-3'>
+        <section
+          id='portfolio'
+          className='portfolio py-12 px-6 sm:px-12 lg:px-28 lg:my-4 h-full'
+        >
+          {/* sm:text-center */}
+          <h1 className='text-2xl 2xl:text-3xl leading-loose'>My Portfolio</h1>
+          <p>
+            Here are just some of the ideas I have been able to make come to
+            life so far.
+          </p>
+          {/* lg:w-full lg:grid grid-cols-2 lg:gap-8 2xl:grid-cols-3 */}
+          {/* 2xl:w-6/12 */}
+          <div className='h-full py-6 lg:pt-14 sm:w-8/12 sm:mx-auto lg:w-full lg:grid grid-cols-2 lg:gap-8 2xl:grid-cols-3'>
             <ProjectCard
               image={ecfolio}
               title='Cardle'

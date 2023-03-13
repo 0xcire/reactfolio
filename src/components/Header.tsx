@@ -40,7 +40,7 @@ function Header() {
   return (
     <header
       ref={headingRef}
-      className={`relative flex justify-between items-center w-full px-6 sm:px-12 lg:px-28 py-4 sm:py-8 text-primary-light dark:text-text-dark ${
+      className={`relative flex justify-between items-center w-full px-6 sm:px-12 lg:px-28 py-4 sm:py-6 text-primary-light dark:text-text-dark ${
         path === '/' ? 'bg-transparent' : 'bg-primary-dark'
       }`}
     >

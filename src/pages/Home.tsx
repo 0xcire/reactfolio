@@ -19,7 +19,7 @@ function Home() {
     <>
       <LazyMotion features={domAnimation} strict>
         <m.div
-          className='h-[calc(100vh-128.5px)] grid place-items-center px-6 bg-transparent text-text-dark overflow-hidden'
+          className='h-[calc(100vh-128.5px)] sm:h-[calc(100vh-144.5px)] lg:h-[calc(100vh-176.5px)] grid place-items-center px-6 bg-transparent text-text-dark overflow-hidden'
           variants={transitionVariants}
           initial={'initial'}
           animate={'animate'}
@@ -40,7 +40,7 @@ function Home() {
 
             <p className='mt-2'>I am a Full-Stack Developer.</p>
             <Link
-              className='rounded-md p-3 block mt-6 w-5/12 max-w-[300px] h-full text-center text-text-light bg-accent-dark sm:mx-auto'
+              className='w-5/12 max-w-[300px] h-full block p-3 mt-6 rounded-md text-center text-text-light bg-accent-dark sm:mx-auto'
               to={`/Portfolio`}
             >
               View my work

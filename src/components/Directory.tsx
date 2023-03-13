@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { File, Folder, FolderOpen } from '@phosphor-icons/react';
 
 type DirProps = {
@@ -8,11 +8,21 @@ type DirProps = {
 
 function Directory({ title, files }: DirProps) {
   const [isOpen, setOpen] = useState<boolean>(true);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
 
-  const toggleOpen = () => setOpen(!isOpen);
+  const toggleOpen = () => {
+    setOpen(!isOpen);
+    if (detailsRef.current) {
+      detailsRef.current.open = isOpen;
+    }
+  };
+
+  useEffect(() => {
+    console.log('hi');
+  }, []);
 
   return (
-    <details open>
+    <details ref={detailsRef} open>
       <summary
         onClick={toggleOpen}
         className='flex items-center rounded-md hover:bg-neutral-dark  cursor-pointer'

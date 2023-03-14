@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { string, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
+import toast, { Toaster } from 'react-hot-toast';
 import {
   EnvelopeSimple,
   LinkedinLogo,
@@ -11,47 +12,26 @@ import {
   PaperPlaneTilt,
 } from '@phosphor-icons/react';
 
-{
-  /* <GithubLogo size={32} /> */
-}
-{
-  /* <LinkedinLogo size={32} /> */
-}
-{
-  /* <At size={32} /> */
-}
-
+// TODO: common, pull out
 const transitionVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
 };
 
+type Inputs = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 const schema = z.object({
   name: string().min(1, { message: 'Please enter your name' }),
   email: string().email(),
-  body: string().min(1, { message: 'Please include a message' }),
+  message: string().min(1, { message: 'Please include a message' }),
 });
 
-type Inputs = {
-  'form-name': string;
-  name: string;
-  email: string;
-  body: string;
-};
-
-const encode = (data: Record<string, string>) => {
-  return Object.keys(data)
-    .map(
-      (key) =>
-        encodeURIComponent(key) + '=' + encodeURIComponent(data[key] as string)
-    )
-    .join('&');
-};
-
 function Contact() {
-  const [formData, setFormData] = useState({});
-
   const {
     register,
     handleSubmit,
@@ -61,18 +41,19 @@ function Contact() {
     resolver: zodResolver(schema),
   });
 
+  // TODO: ensure netlify receives 'message' param
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-
-    setFormData({ name: data.name, email: data.email, message: data.body });
-
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...formData }),
+      body: new URLSearchParams(data),
     })
-      .then(() => console.log('success!'))
-      .catch((err) => console.log(err));
+      .then(() => toast.success('Thank you!'))
+      .catch((err) => {
+        toast.error('error sending message.');
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -80,7 +61,7 @@ function Contact() {
       reset({
         name: '',
         email: '',
-        body: '',
+        message: '',
       });
     }
   }, [isSubmitSuccessful, reset]);
@@ -133,6 +114,16 @@ function Contact() {
             </div>
           </div>
           <div className='form rounded mt-6 md:mt-0 md:w-5/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12'>
+            <Toaster
+              position='top-right'
+              reverseOrder={false}
+              toastOptions={{
+                style: {
+                  backgroundColor: '#f0ebd8',
+                  color: '#14213d',
+                },
+              }}
+            />
             <form
               name='contact'
               method='POST'
@@ -167,14 +158,14 @@ function Contact() {
               <div className='flex flex-col my-3'>
                 <textarea
                   className='p-2 rounded bg-[#3e5c76] text-text-dark  placeholder:text-text-dark focus:outline focus: outline-1 focus:outline-text-dark resize-none'
-                  id='body'
+                  id='message'
                   cols={20}
                   rows={8}
                   placeholder='Message'
-                  {...register('body', { required: true })}
+                  {...register('message', { required: true })}
                 ></textarea>
                 <p className='text-sm text-accent-dark'>
-                  {errors.body?.message}
+                  {errors.message?.message}
                 </p>
               </div>
 

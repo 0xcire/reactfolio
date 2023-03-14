@@ -19,8 +19,6 @@ function About() {
         animate={'animate'}
         exit={'exit'}
       >
-        {/* md:flex md:justify-between */}
-        {/* className='w-[450px] xl:max-w-[600px]' */}
         <section
           id='about-me'
           className='mt-12 py-12 h-full md:grid md:grid-cols-[1fr,2fr] 2xl:grid-cols-[0.75fr,2fr]'

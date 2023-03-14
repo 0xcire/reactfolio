@@ -1,12 +1,16 @@
-// import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 // const links: string[] = ['Home', 'Portfolio', 'About', 'Contact'];
 
 function Footer() {
-  // const path = useLocation().pathname;
+  const path = useLocation().pathname;
 
   return (
-    <footer className='py-6 lg:py-8 text-text-dark bg-primary-dark text-center text-[11px]'>
+    <footer
+      className={`py-6 lg:py-8 text-text-dark text-center text-[11px] ${
+        path === '/' ? 'bg-transparent' : 'bg-primary-dark'
+      }`}
+    >
       <>
         {/* {path !== '/' ? (
           <nav className='mb-2'>

@@ -10,5 +10,5 @@ Visit [here](https://ecfolio.netlify.app/).
 - Framer Motion
 
 - TypeScript
-- React / React Router
+- React / React Router / React Hook Form
 - Github Actions to Netlify

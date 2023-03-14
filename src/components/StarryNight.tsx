@@ -52,8 +52,9 @@ function StarryNight() {
   }, []);
 
   // drop-shadow-[0_0_20px_#465976]
+  // bg-gradient-to-tr from-[#0d1321] via-[#3e5c76] to-[#748cab]
   return (
-    <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark overflow-hidden'>
+    <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark  overflow-hidden'>
       <svg className='sky absolute w-full h-full'>
         <LazyMotion features={domAnimation}>
           {[...Array(60)].map((_star, index) => {

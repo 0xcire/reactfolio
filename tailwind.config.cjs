@@ -12,6 +12,12 @@ module.exports = {
       // change light theme so i can still have 'white' stars/shooting stars
       // dark?: #0d1321, #1d2d44, #3e5c76, #748cab, #f0ebd8
       // light?: #cfdbd5, #e8eddf, #E7BB41, #242423, #333533
+      // TODO: update theme so that:
+      // #14213d = primary-dark
+      // #241500 secondary-dark; something around here just not #000
+      // #fca311 accent unless can curate a better burnt orange to represent 'sun'
+      // #e5e5e5 eh
+      // #f4f4f4
       colors: {
         primary: {
           light: '#e8eddf',
@@ -47,7 +53,7 @@ module.exports = {
         },
         error: {
           light: '',
-          dark: '#dc2626',
+          dark: '#aa7d47',
         },
       },
     },

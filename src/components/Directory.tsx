@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { File, Folder, FolderOpen } from '@phosphor-icons/react';
 
 type DirProps = {
@@ -16,10 +16,6 @@ function Directory({ title, files }: DirProps) {
       detailsRef.current.open = isOpen;
     }
   };
-
-  useEffect(() => {
-    console.log('hi');
-  }, []);
 
   return (
     <details ref={detailsRef} open>

@@ -41,19 +41,21 @@ function Contact() {
     resolver: zodResolver(schema),
   });
 
-  // TODO: ensure netlify receives 'message' param
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data),
-    })
-      .then(() => toast.success('Thank you!'))
-      .catch((err) => {
-        toast.error('error sending message.');
-        console.log(err);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const attempt = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
       });
+      if (!attempt.ok) {
+        toast.error('error sending message.');
+      } else {
+        toast.success('Thank you!');
+      }
+    } catch (error) {
+      toast.error("Couldn't send message");
+    }
   };
 
   useEffect(() => {

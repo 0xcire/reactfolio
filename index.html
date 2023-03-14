@@ -11,6 +11,12 @@
     <title>EC Portfolio</title>
   </head>
   <body>
+    <input type="hidden" name="form-name" value="contact" data-netlify="true" />
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="text" name="email" />
+      <textarea type="text" name="body"></textarea>
+    </form>
     <div id="root"></div>
 
     <script type="module" src="/src/main.tsx"></script>

@@ -138,12 +138,8 @@ function Contact() {
               method='POST'
               className='mt-8 md:mt-0'
               onSubmit={handleSubmit(onSubmit)}
-              data-value='contact'
-              data-netlify='true'
-              data-netlify-honeypot='bot-field'
             >
               <input type='hidden' name='form-name' value='contact' />
-              <input name='bot-field' hidden />
               <div className='flex flex-col my-3 md:my-0 relative'>
                 <input
                   className='px-2 py-3 rounded bg-[#3e5c76] text-text-dark placeholder:text-text-dark focus:outline focus: outline-1 focus:outline-text-dark'

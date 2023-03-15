@@ -31,6 +31,14 @@ const schema = z.object({
   message: string().min(1, { message: 'Please include a message' }),
 });
 
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map(
+      (key) =>
+        encodeURIComponent(key) + '=' + encodeURIComponent(data[key] as string)
+    )
+    .join('&');
+};
 function Contact() {
   const {
     register,
@@ -42,11 +50,12 @@ function Contact() {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(encode({ 'form-name': 'contact', ...data }));
     try {
       const attempt = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString(),
+        body: encode({ 'form-name': 'contact', ...data }),
       });
       if (!attempt.ok) {
         toast.error('error sending message.');

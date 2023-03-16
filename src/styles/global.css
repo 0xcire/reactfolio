@@ -33,3 +33,9 @@
     min-height: 100%;
   }
 }
+
+@layer utilities {
+  .text-fill-transparent {
+    -webkit-text-fill-color: transparent;
+  }
+}

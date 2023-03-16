@@ -28,11 +28,9 @@ function MobileNav({ links }: MobileNavProps) {
 
   const toggleMenu = useCallback(() => {
     setMobileMenuOpen(!mobileMenuOpen);
-    // TODO: come back to this if i change Header functionality
-    // TODO: also weird vh behavior on some browsers, lvh/svh possible solutions
-    // !mobileMenuOpen
-    //   ? (document.body.style.overflow = 'hidden')
-    //   : (document.body.style.overflow = 'unset');
+    // TODO: close on scroll
+    // TODO: make menu container smaller, doesnt need to take up screen
+    // TODO: focus-trap npm
   }, [mobileMenuOpen]);
 
   useEffect(() => {
@@ -129,7 +127,7 @@ function MobileNav({ links }: MobileNavProps) {
               exit={'closed'}
               transition={{ duration: 0.25 }}
               variants={navVariants}
-              className='absolute flex flex-col justify-end right-0 top-[100%] w-6/12 h-[calc(100vh-64px)] bg-[rgb(29, 45, 68)] bg-[#1d2d44]/[0.85] text-text-dark z-10'
+              className='absolute flex flex-col justify-end right-0 top-[100%] w-6/12 h-[calc(100vh-64px)] bg-[#14213d]/[0.85] text-text-dark z-10'
             >
               <div className='socials flex items-center justify-end mr-6 mb-4'>
                 <Link
@@ -137,13 +135,13 @@ function MobileNav({ links }: MobileNavProps) {
                   to={`https://github.com/0xcire`}
                   target='_blank'
                 >
-                  <GithubLogo className='mr-2' size={32} />
+                  <GithubLogo className='mr-2' size={26} />
                 </Link>
                 <Link
                   to={`https://www.linkedin.com/in/ericchi1/`}
                   target='_blank'
                 >
-                  <LinkedinLogo size={32} />
+                  <LinkedinLogo size={26} />
                 </Link>
               </div>
               <nav className='flex flex-col text-right  mb-10'>

@@ -1,42 +1,13 @@
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import MobileNav from './MobileNav';
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { useRef } from 'react';
-
-// [] add to data directory
-const links: string[] = ['Portfolio', 'About', 'Contact'];
+import { Link, useLocation } from 'react-router-dom';
+import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import MobileNav from './Header/MobileNav';
+import { links } from '../data/data';
 
 function Header() {
   const headingRef = useRef<HTMLDivElement>(null);
   const path = useLocation().pathname;
 
-  // TODO: still debating on this, depends on how involved about page is i guess
-  // throttle to not fire so many events?
-  // const handleScroll = () => {
-  //   const header = headingRef.current?.getBoundingClientRect();
-  //   const nextElement =
-  //     headingRef.current?.nextElementSibling?.getBoundingClientRect();
-  //   if (header && nextElement) {
-  //     if (
-  //       header?.top <= nextElement?.top + nextElement?.height &&
-  //       header.top + header.height > nextElement.top
-  //     ) {
-  //       setOverlapping(true);
-  //     } else {
-  //       setOverlapping(false);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener('scroll', handleScroll);
-
-  //   return () => document.removeEventListener('scroll', handleScroll);
-  // }, []);
-
-  // sticky top-0
-  // isOverlapping ? 'bg-[#1d2d44]/[0.85]' : 'bg-transparent'
   return (
     <header
       ref={headingRef}
@@ -49,6 +20,7 @@ function Header() {
       </h1>
       <div className='hidden sm:flex sm:items-center'>
         <div className='socials flex items-center justify-end'>
+          {/* TODO: consider removing social links from header, and add to hero */}
           <Link
             className='mr-6'
             to={`https://github.com/0xcire`}

@@ -17,17 +17,19 @@ function Contact() {
   return (
     <LazyMotion features={domAnimation} strict>
       <m.div
-        className='text-text-dark px-6 sm:px-12 lg:px-48 xl:px-60 2xl:px-96'
+        // TODO: address this contact form placement,
+        // TODO: common min-h-[calc(100svh-(theme(header+footer)))]
+        className='text-text-dark padding-x min-h-[calc(100svh-175px)] grid place-items-center'
         variants={transitionVariants}
         initial={'initial'}
         animate={'animate'}
         exit={'exit'}
       >
-        <section className='md:h-full md:mt-24 lg:mt-36 xl:mt-42 md:flex md:justify-between text-center md:text-left'>
+        <section className='md:flex md:justify-between text-center md:text-left'>
           <div className='md:w-6/12'>
             <h1 className='text-2xl mt-12 md:mt-0'>{heading}</h1>
             <div className='links'>
-              <p>{subheading}</p>
+              <p className='sm:pr-6'>{subheading}</p>
               <h2 className='text-2xl mt-8'>{linksheading}</h2>
 
               {Object.keys(links).map((link, index) => (

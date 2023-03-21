@@ -3,8 +3,6 @@
 
 // stretch: big dipper constellation
 // star count by screen size
-// can use for about page and contact, etc just the stars effect?
-// adjust shootingStar container for 1440p/4K + displays
 
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -34,28 +32,25 @@ function StarryNight() {
   const starDelay = (index: number) => Math.random() * index;
 
   const randomPercentage = () => Math.floor(Math.random() * 101);
-  const wishDelay = (index: number) => Math.random() * index * 5;
+  const wishDelay = (index: number) => Math.random() * index * 2;
 
   const getResizedDimensions = () => {
-    setWidth(Math.max(window.innerWidth));
-    setHeight(Math.max(window.innerHeight));
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
   };
 
-  //TODO: handle math.max uselessness
   useEffect(() => {
-    setWidth(Math.max(window.innerWidth));
-    setHeight(Math.max(window.innerHeight));
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
 
     window.addEventListener('resize', getResizedDimensions);
 
     return () => window.removeEventListener('resize', getResizedDimensions);
   }, []);
 
-  // drop-shadow-[0_0_20px_#465976]
-  // bg-gradient-to-tr from-[#0d1321] via-[#3e5c76] to-[#748cab]
   return (
-    <div className='absolute top-0 left-0 w-full h-full z-[-2] bg-primary-dark  overflow-hidden'>
-      <svg className='sky absolute w-full h-full'>
+    <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none'>
+      <svg className='sky absolute w-screen h-full bg-primary-dark z-[-3]'>
         <LazyMotion features={domAnimation}>
           {[...Array(60)].map((_star, index) => {
             return (
@@ -85,13 +80,13 @@ function StarryNight() {
       {/* TODO: is a potential perf optimization to create svg lines and animate
       the path drawing? could potentially solve weird off screen rotated parent div
       conundrum*/}
-      <div className='shootingStars absolute top-0 w-[150vw] sm:w-[120vw] lg:w-[115vw] xl:w-[100vw] 2xl:w-[80vw] h-[100vh] lg:h-[120vh] xl:h-[130vh] 2xl:h-[110vh] -rotate-[30deg] translate-x-[-20%] sm:translate-x-[-10%] lg:translate-x-[-5%] xl:translate-x-[2.5%] 2xl:translate-x-[12%] sm:translate-y-[0%] lg:translate-y-[-5%] xl:translate-y-[-5%] 2xl:translate-y-[-5%] overflow-hidden z-[-1]'>
+      <div className='shootingStars absolute top-0 w-[150vw] sm:w-[120vw] lg:w-[115vw] xl:w-[100vw] 2xl:w-[80vw] h-[100vh] lg:h-[120vh] xl:h-[130vh] 2xl:h-[110vh] -rotate-[30deg] translate-x-[-20%] sm:translate-x-[-10%] lg:translate-x-[-5%] xl:translate-x-[2.5%] 2xl:translate-x-[12%] sm:translate-y-[0%] lg:translate-y-[-5%] xl:translate-y-[-5%] 2xl:translate-y-[-5%] z-[-1]'>
         <LazyMotion features={domAnimation}>
           {[...Array(10)].map((_shootingStar, index) => {
             return (
               <m.div
                 key={index}
-                className='wish absolute h-[2px] w-[0px] p-0 bg-black opacity-0 bg-gradient-to-tr from-[#f0ebd8] to-[rgba(0, 0, 255, 0)] overflow-hidden'
+                className='wish absolute h-[2px] w-[0px] p-0 bg-black opacity-0 bg-gradient-to-tr from-[#f0ebd8] to-[rgba(0, 0, 255, 0)]'
                 style={{
                   top: `${randomPercentage()}%`,
                   left: `${randomPercentage()}%`,
@@ -102,7 +97,7 @@ function StarryNight() {
                 transition={{
                   repeatType: 'loop',
                   repeat: Infinity,
-                  duration: 1.75,
+                  duration: 1.5,
                   ease: 'easeOut',
                   delay: wishDelay(index),
                   repeatDelay: wishDelay(index),

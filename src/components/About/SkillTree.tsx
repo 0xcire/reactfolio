@@ -8,7 +8,7 @@ type treeProps = {
 function SkillTree({ skills }: treeProps) {
   const skillKeys = Object.keys(skills);
   return (
-    <div className='order-3 mt-8 md:mt-[52px] w-6/12 md:w-full'>
+    <div className='order-3 w-6/12 mt-8 md:mt-[52px] md:w-full'>
       <details open>
         <summary className='cursor-pointer w-full'>SKILLS:</summary>
         <div className='mt-2 skills flex flex-col justify-between md:w-10/12 xl:w-8/12'>

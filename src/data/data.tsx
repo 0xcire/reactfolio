@@ -38,7 +38,8 @@ export const homeData: home = {
   emoji: '🚀',
   // TODO: this will be array of interests in future to animate, or maybe put on about page
   subheading: 'I am a Full-Stack Developer.',
-  cta: 'View my work',
+  // cta: ['My Work', 'Learn More'],
+  cta: 'View My Work',
 };
 
 // ==============================================
@@ -104,7 +105,7 @@ export const folioData: folio = {
     {
       img: todo,
       title: 'Todo App',
-      stack: 'HTML | CSS | JS | Web APIs | Basic CRUD | MVC',
+      stack: 'HTML | CSS | JS | Web APIs | CRUD | MVC',
       description:
         "Reactive todo app. Following an MVC pattern. Roughly inspired by Apple's reminders app. Tried implementing an intuitive UX that flows with user inputs. Basic CRUD fundamentals sans database.",
       links: {
@@ -144,11 +145,11 @@ export const aboutData: about = {
 
     'Even though I have been focusing on the front end, understanding how an entire app functions has been a large source of motivation for me and transitioning into a full stack, or even purely back end developer is a goal of mine. Finding a company that could facilitate such growth would be ideal.',
 
-    'While not being completely engulfed in the tech world, you can find me in the gym, in nature,going for a drive in my car or motorcycle. Generally just trying to lead an active lifestyle.',
+    'While not being completely engulfed in the tech world, you can find me in the gym, in nature,   or going for a drive in my car or motorcycle. Generally just trying to lead an active lifestyle.',
   ],
   skills: {
     '.github': ['actions.yml'],
-    client: ['.html', '.css', '.tailwind', '.js', '.ts', '.react'],
+    client: ['.html', '.css', '.sass', '.tailwind', '.js', '.ts', '.react'],
     server: ['.node', '.express'],
   },
   cta: 'Get in touch',
@@ -169,7 +170,7 @@ type contact = {
 export const contactData: contact = {
   heading: 'Contact me',
   subheading:
-    'Please get in touch if you believe I would be a good fit for your company.',
+    'Please get in touch if you believe I would be a good fit for your company, or if there is a project you would like to work together on.',
   linksheading: 'Additional Links',
   links: {
     Github: {

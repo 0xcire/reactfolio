@@ -9,8 +9,13 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
-      // change light theme so i can still have 'white' stars/shooting stars
-      // dark?: #0d1321, #1d2d44, #3e5c76, #748cab, #f0ebd8
+      screens: {
+        '2k': '1600px',
+      },
+      height: {
+        header: '100px',
+        footer: '75px',
+      },
       // light?: #cfdbd5, #e8eddf, #E7BB41, #242423, #333533
       // TODO: update theme so that:
       // #14213d = primary-dark
@@ -18,6 +23,7 @@ module.exports = {
       // #fca311 accent unless can curate a better burnt orange to represent 'sun'
       // #e5e5e5 eh
       // #f4f4f4
+      // #f0ebd8
       colors: {
         primary: {
           light: '#e8eddf',

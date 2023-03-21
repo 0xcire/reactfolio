@@ -28,9 +28,10 @@ function MobileNav({ links }: MobileNavProps) {
 
   const toggleMenu = useCallback(() => {
     setMobileMenuOpen(!mobileMenuOpen);
-    // TODO: close on scroll
-    // TODO: make menu container smaller, doesnt need to take up screen
-    // TODO: focus-trap npm
+    console.log(mobileMenuOpen, document.body.style.overflow);
+    !mobileMenuOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
   }, [mobileMenuOpen]);
 
   useEffect(() => {
@@ -53,7 +54,8 @@ function MobileNav({ links }: MobileNavProps) {
         }
       }
     };
-    document.addEventListener('keydown', handleEscKey);
+
+    document.addEventListener('keydown', handleEscKey, { once: true });
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
@@ -68,8 +70,8 @@ function MobileNav({ links }: MobileNavProps) {
         <LazyMotion features={domAnimation}>
           <m.svg
             xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
+            width='28'
+            height='28'
             fill='#f0ebd8'
             viewBox='0 0 256 256'
           >
@@ -95,7 +97,7 @@ function MobileNav({ links }: MobileNavProps) {
               strokeLinecap='round'
               strokeLinejoin='round'
               strokeWidth='16'
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.15 }}
               animate={mobileMenuOpen ? 'open' : 'closed'}
               variants={middleVariant}
             ></m.line>
@@ -109,7 +111,7 @@ function MobileNav({ links }: MobileNavProps) {
               strokeLinecap='round'
               strokeLinejoin='round'
               strokeWidth='16'
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.15 }}
               animate={mobileMenuOpen ? 'open' : 'closed'}
               variants={bottomVariant}
             ></m.line>
@@ -125,29 +127,31 @@ function MobileNav({ links }: MobileNavProps) {
               initial={'closed'}
               animate={'open'}
               exit={'closed'}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.15 }}
               variants={navVariants}
-              className='absolute flex flex-col justify-end right-0 top-[100%] w-6/12 h-[calc(100vh-64px)] bg-[#14213d]/[0.85] text-text-dark z-10'
+              className='absolute top-[100%] right-0 w-5/12 h-[calc(100svh-theme(height.header))] 
+                         pr-6 flex flex-col justify-end w-max-content bg-[#14213d]/[0.5] backdrop-blur-sm text-text-dark z-1'
             >
-              <div className='socials flex items-center justify-end mr-6 mb-4'>
+              <div className='flex items-center justify-end'>
                 <Link
-                  className='mr-3'
+                  className='p-6'
                   to={`https://github.com/0xcire`}
                   target='_blank'
                 >
-                  <GithubLogo className='mr-2' size={26} />
+                  <GithubLogo size={26} />
                 </Link>
                 <Link
+                  className='p-6 pr-0'
                   to={`https://www.linkedin.com/in/ericchi1/`}
                   target='_blank'
                 >
                   <LinkedinLogo size={26} />
                 </Link>
               </div>
-              <nav className='flex flex-col text-right  mb-10'>
+              <nav className='flex flex-col text-right mb-12'>
                 {links.map((link, index) => (
                   <Link
-                    className='py-2 px-6'
+                    className='my-2 py-4 px-6 pr-0'
                     key={index}
                     to={`/${link}`}
                     onClick={toggleMenu}

@@ -11,16 +11,16 @@ function Header() {
   return (
     <header
       ref={headingRef}
-      className={`relative flex justify-between items-center w-full px-6 sm:px-12 lg:px-28 py-4 sm:py-6 text-primary-light dark:text-text-dark ${
-        path === '/' ? 'bg-transparent' : 'bg-primary-dark'
-      }`}
+      className={`relative flex justify-between items-center h-header w-full padding-x sm:py-6 text-text-dark 
+      ${path === '/' ? 'bg-transparent' : 'bg-primary-dark'}`}
     >
       <h1 className='font-bold text-2xl'>
-        <Link to={`/`}>EC</Link>
+        <Link className='text-[28px]' to={`/`}>
+          EC
+        </Link>
       </h1>
       <div className='hidden sm:flex sm:items-center'>
-        <div className='socials flex items-center justify-end'>
-          {/* TODO: consider removing social links from header, and add to hero */}
+        <div className='flex items-center justify-end'>
           <Link
             className='mr-6'
             to={`https://github.com/0xcire`}

@@ -39,7 +39,6 @@ function Form() {
 
   // TODO: useSendFormData()
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(encode({ 'form-name': 'contact', ...data }));
     try {
       const attempt = await fetch('/', {
         method: 'POST',
@@ -67,7 +66,7 @@ function Form() {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <div className='form rounded mt-6 md:mt-0 md:w-5/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12'>
+    <div className='rounded mt-6 md:mt-0 md:w-6/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12'>
       <Toaster
         position='top-right'
         reverseOrder={false}
@@ -87,7 +86,7 @@ function Form() {
         <input type='hidden' name='form-name' value='contact' />
         <div className='flex flex-col my-3 md:my-0 relative'>
           <input
-            className='px-2 py-3 rounded bg-[#3e5c76] text-text-dark placeholder:text-text-dark focus:outline focus: outline-1 focus:outline-text-dark'
+            className='contact-input'
             type='text'
             placeholder={placeholder.name}
             {...register('name', { required: true })}
@@ -99,7 +98,7 @@ function Form() {
 
         <div className='flex flex-col my-3'>
           <input
-            className='px-2 py-3 rounded bg-[#3e5c76] text-text-dark  placeholder:text-text-dark focus:outline focus: outline-1 focus:outline-text-dark'
+            className='contact-input'
             type='text'
             placeholder={placeholder.email}
             {...register('email', { required: true })}
@@ -109,7 +108,7 @@ function Form() {
 
         <div className='flex flex-col my-3'>
           <textarea
-            className='p-2 rounded bg-[#3e5c76] text-text-dark  placeholder:text-text-dark focus:outline focus: outline-1 focus:outline-text-dark resize-none'
+            className='contact-input resize-none'
             id='message'
             cols={20}
             rows={8}
@@ -119,7 +118,7 @@ function Form() {
           <p className='text-sm text-accent-dark'>{errors.message?.message}</p>
         </div>
 
-        <button className='py-2 px-6 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'>
+        <button className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'>
           {cta.icon}
           {cta.text}
         </button>

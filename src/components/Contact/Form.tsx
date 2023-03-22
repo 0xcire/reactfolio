@@ -2,8 +2,21 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { string, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { m } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
 import { formData } from '../../data/data';
+
+const content = {
+  initial: { y: '100%', opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.25,
+    },
+  },
+};
 
 type Inputs = {
   name: string;
@@ -66,7 +79,7 @@ function Form() {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <div className='rounded mt-6 md:mt-0 md:w-6/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12'>
+    <m.div className='rounded mt-6 md:mt-0 md:w-6/12 lg:w-6/12 xl:w-5/12 2xl:w-4/12'>
       <Toaster
         position='top-right'
         reverseOrder={false}
@@ -77,6 +90,7 @@ function Form() {
           },
         }}
       />
+
       <form
         name='contact'
         method='POST'
@@ -84,7 +98,10 @@ function Form() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <input type='hidden' name='form-name' value='contact' />
-        <div className='flex flex-col my-3 md:my-0 relative'>
+        <m.div
+          className='flex flex-col my-3 md:my-0 relative'
+          variants={content}
+        >
           <input
             className='contact-input'
             type='text'
@@ -94,9 +111,9 @@ function Form() {
           <p className='text-sm text-error-dark rounded bg-primary-dark/[0.9]'>
             {errors.name?.message}
           </p>
-        </div>
+        </m.div>
 
-        <div className='flex flex-col my-3'>
+        <m.div className='flex flex-col my-3' variants={content}>
           <input
             className='contact-input'
             type='text'
@@ -104,9 +121,9 @@ function Form() {
             {...register('email', { required: true })}
           />
           <p className='text-sm text-error-dark'>{errors.email?.message}</p>
-        </div>
+        </m.div>
 
-        <div className='flex flex-col my-3'>
+        <m.div className='flex flex-col my-3' variants={content}>
           <textarea
             className='contact-input resize-none'
             id='message'
@@ -116,14 +133,17 @@ function Form() {
             {...register('message', { required: true })}
           ></textarea>
           <p className='text-sm text-accent-dark'>{errors.message?.message}</p>
-        </div>
+        </m.div>
 
-        <button className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'>
+        <m.button
+          className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
+          variants={content}
+        >
           {cta.icon}
           {cta.text}
-        </button>
+        </m.button>
       </form>
-    </div>
+    </m.div>
   );
 }
 

@@ -3,13 +3,7 @@ import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Form from '../components/Contact/Form';
 import { contactData } from '../data/data';
 import { link as TLink } from '../data/data';
-
-// TODO: common, pull out
-const transitionVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+import { pageTransition, content } from '../data/data';
 
 function Contact() {
   const { heading, subheading, linksheading, links } = contactData;
@@ -17,21 +11,30 @@ function Contact() {
   return (
     <LazyMotion features={domAnimation} strict>
       <m.div
-        // TODO: address this contact form placement,
-        // TODO: common min-h-[calc(100svh-(theme(header+footer)))]
         className='text-text-dark padding-x min-h-[calc(100svh-175px)] grid place-items-center'
-        variants={transitionVariants}
+        variants={pageTransition}
         initial={'initial'}
         animate={'animate'}
         exit={'exit'}
+        transition={{
+          delayChildren: 0.15,
+          staggerChildren: 0.1,
+          staggerDirection: -1,
+        }}
       >
         <section className='md:flex md:justify-between text-center md:text-left'>
           <div className='md:w-6/12'>
-            <h1 className='text-2xl mt-12 md:mt-0'>{heading}</h1>
-            <div className='links'>
-              <p className='sm:pr-6'>{subheading}</p>
-              <h2 className='text-2xl mt-8'>{linksheading}</h2>
+            <m.h1 className='text-2xl mt-12 md:mt-0' variants={content}>
+              {heading}
+            </m.h1>
 
+            <m.p className='sm:pr-6' variants={content}>
+              {subheading}
+            </m.p>
+            <m.h2 className='text-2xl mt-8' variants={content}>
+              {linksheading}
+            </m.h2>
+            <m.div variants={content}>
               {Object.keys(links).map((link, index) => (
                 <Link
                   key={index}
@@ -45,8 +48,9 @@ function Contact() {
                   </>
                 </Link>
               ))}
-            </div>
+            </m.div>
           </div>
+
           <Form />
         </section>
       </m.div>

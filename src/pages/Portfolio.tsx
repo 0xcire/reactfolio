@@ -1,13 +1,7 @@
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 import ProjectCard from '../components/Portfolio/ProjectCard';
 import { folioData } from '../data/data';
-
-// TODO: pull out
-const transitionVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+import { pageTransition, content } from '../data/data';
 
 function Portfolio() {
   const { heading, subheading } = folioData.headings;
@@ -17,14 +11,25 @@ function Portfolio() {
     <LazyMotion features={domAnimation} strict>
       <m.div
         className='bg-primary-dark text-text-dark min-h-[calc(100svh-(theme(height.header)+theme(height.footer)))] grid place-items-center'
-        variants={transitionVariants}
+        variants={pageTransition}
         initial={'initial'}
         animate={'animate'}
         exit={'exit'}
+        transition={{
+          delayChildren: 0.15,
+          staggerChildren: 0.1,
+        }}
       >
         <section id='portfolio' className='px-6 sm:px-12 lg:px-28'>
-          <h1 className='text-3xl'>{heading}</h1>
-          <p className='mb-12 xl:text-[18px]'>{subheading}</p>
+          <div className='overflow-hidden'>
+            <m.h1 className='text-3xl' variants={content}>
+              {heading}
+            </m.h1>
+          </div>
+
+          <m.p className='mb-12 xl:text-[18px]' variants={content}>
+            {subheading}
+          </m.p>
           <div className='sm:w-8/12 sm:mx-auto lg:w-full lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3'>
             {projects.map((project, index) => (
               <ProjectCard

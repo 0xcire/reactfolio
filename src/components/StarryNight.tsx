@@ -50,7 +50,7 @@ function StarryNight() {
 
   return (
     <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none'>
-      <svg className='sky absolute w-screen h-full bg-primary-dark z-[-3]'>
+      <svg className='sky absolute left-0 w-screen h-full bg-primary-dark z-[-3]'>
         <LazyMotion features={domAnimation}>
           {[...Array(60)].map((_star, index) => {
             return (

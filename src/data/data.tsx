@@ -14,7 +14,30 @@ import ecfolio from '../assets/images/ecfolio.webp';
 // ==============================================
 // COMMON
 // ==============================================
+type animateSteps = 'initial' | 'animate' | 'exit';
+type pageAnimation = Record<'opacity', number>;
+type TPage = Record<animateSteps, pageAnimation>;
+
+export const pageTransition: TPage = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+export const content = {
+  initial: { y: '100%', opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.3,
+    },
+  },
+};
+
 export const links: string[] = ['Portfolio', 'About', 'Contact'];
+
 export type ctaProps = {
   icon: JSX.Element;
   url?: string;
@@ -73,7 +96,7 @@ export const folioData: folio = {
       stack:
         'Tailwind | Framer Motion | TypeScript | React (Router) | Github Actions',
       description:
-        'The site you are on right now. Used as an introduction into modern React and TypeScript development. Also taking this time to get my feet wet in the entire development lifecycle. Excited to implement this knowledge with backend development!',
+        'The site you are on right now. Dove right into a more modern workflow and forced myself to learn via docs alone. Everything from Tailwind to Github Actions. Enjoyed not having to do everything from scratch.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -107,7 +130,7 @@ export const folioData: folio = {
       title: 'Todo App',
       stack: 'HTML | CSS | JS | Web APIs | CRUD | MVC',
       description:
-        "Reactive todo app. Following an MVC pattern. Roughly inspired by Apple's reminders app. Tried implementing an intuitive UX that flows with user inputs. Basic CRUD fundamentals sans database.",
+        "Reactive todo app. Following an MVC pattern. Roughly inspired by Apple's reminders app. Implemented an intuitive UX that flows with user inputs. Basic CRUD fundamentals sans database.",
       links: {
         code: {
           icon: <Code size={20} />,

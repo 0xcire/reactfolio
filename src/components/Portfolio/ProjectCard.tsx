@@ -1,3 +1,4 @@
+import { m } from 'framer-motion';
 import LinkBtn from '../LinkBtn';
 import { projectlink } from '../../data/data';
 
@@ -9,9 +10,24 @@ type CardProps = {
   links: projectlink;
 };
 
+const content = {
+  initial: { y: '35%', opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.25,
+    },
+  },
+};
+
 function ProjectCard({ image, title, stack, description, links }: CardProps) {
   return (
-    <div className='flex flex-col justify-between rounded-md shadow-md shadow-[#121d2c] my-12 lg:my-0'>
+    <m.div
+      className='flex flex-col justify-between rounded-md shadow-md shadow-[#121d2c] my-12 lg:my-0'
+      variants={content}
+    >
       <div className=''>
         <img
           className='rounded-md w-full h-auto xl:h-full xl:w-auto xl:my-auto'
@@ -35,6 +51,7 @@ function ProjectCard({ image, title, stack, description, links }: CardProps) {
               url={links[link as keyof projectlink].url ?? ''}
               target='_blank'
               className='flex items-center'
+              variants={{}}
             >
               {links[link as keyof projectlink].icon}
               <p className='ml-2'>{link}</p>
@@ -42,7 +59,7 @@ function ProjectCard({ image, title, stack, description, links }: CardProps) {
           ))}
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }
 

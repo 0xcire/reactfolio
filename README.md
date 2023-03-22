@@ -21,6 +21,6 @@ Built completely from just reading docs. Pretty confident in this style workflow
 
 Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
 
-Dove into Tailwind, TypeScipt, and React all at once without a course, just reading docs. Wasn't the worst experience, because I had fundamentals mostly down, but also wasn't the smoothest. Will be taking a few TypeScript courses, and following along Full Stack Open now to cover all bases.
+Dove into Tailwind, TypeScipt, and React all at once without a course, just reading docs. Wasn't the worst experience, because I had fundamentals mostly down, but also wasn't the smoothest. Will be taking a few TypeScript courses (to properly learn how to extend other types), and tie the frontend together with the backend via [Full Stack Open](https://fullstackopen.com)
 
 Especially before completing some of the larger scale projects I have in mind.

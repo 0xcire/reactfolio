@@ -57,7 +57,4 @@
   .contact-input {
     @apply px-2 py-3 rounded bg-[#203258] text-text-dark  placeholder:text-text-dark focus:outline focus:outline-1 focus:outline-text-dark;
   }
-  btn {
-    @apply p-3;
-  }
 }

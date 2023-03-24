@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import StarryNight from '../components/StarryNight';
-
-const transitionVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+import { pageTransition } from '../data/data';
 
 function _404() {
   const page = window.location.pathname.split('/')[1];
@@ -15,10 +10,11 @@ function _404() {
     <LazyMotion features={domAnimation} strict>
       <m.div
         className='relative h-screen grid place-items-center text-text-dark overflow-hidden'
-        variants={transitionVariants}
+        variants={pageTransition}
         initial={'initial'}
         animate={'animate'}
         exit={'exit'}
+        data-testid='_404'
       >
         <div className='sm:text-center'>
           <h1 className='font-bold text-2xl'>Oops! 404</h1>

@@ -20,7 +20,10 @@ function Home() {
             staggerChildren: 0.1,
           }}
         >
-          <m.section className='w-full flex flex-col sm:text-center'>
+          <m.section
+            className='w-full flex flex-col sm:text-center'
+            data-testid='home-section'
+          >
             <div className=' overflow-hidden flex sm:justify-center'>
               <m.h1
                 className='text-5xl font-bold overflow-y-hidden
@@ -38,8 +41,9 @@ function Home() {
             </m.p>
             <LinkBtn
               url='/Portfolio'
-              className='mt-6 sm:mx-auto'
+              className='home-cta mt-6 sm:mx-auto'
               variants={content}
+              dataTestID={'home-cta'}
             >
               {cta}
             </LinkBtn>

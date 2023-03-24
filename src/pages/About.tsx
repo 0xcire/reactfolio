@@ -22,6 +22,7 @@ function About() {
         <section
           id='about-me'
           className='padding-x py-12 h-[inherit] md:grid md:grid-cols-[1fr,2fr] 2xl:grid-cols-[0.75fr,2fr]'
+          data-testid='about-section'
         >
           <div className='order-2 overflow-hidden'>
             <m.h1
@@ -42,7 +43,12 @@ function About() {
                 {text}
               </p>
             ))}
-            <LinkBtn url='/Contact' className='mt-6 block' variants={content}>
+            <LinkBtn
+              url='/Contact'
+              className='mt-6 block'
+              variants={content}
+              dataTestID={'about-cta'}
+            >
               {cta}
             </LinkBtn>
           </m.div>

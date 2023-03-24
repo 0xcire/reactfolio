@@ -12,6 +12,7 @@ Visit [here](https://ecfolio.netlify.app/).
 - TypeScript
 - React / React Router / React Hook Form
 - Github Actions to Netlify
+- Vitest / Jest / React Testing Library
 
 ### how?
 

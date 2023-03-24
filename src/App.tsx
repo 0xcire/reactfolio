@@ -1,5 +1,6 @@
 import { lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout/Layout';
 import Error from './components/Layout/Error';
@@ -9,20 +10,18 @@ import routes from './pages/routes';
 
 function App() {
   return (
-    <BrowserRouter>
-      <AnimatePresence>
-        <Routes key={'routes'}>
-          <Route element={<Layout />}>
-            {routes.map((page, index) => (
-              <Route key={index} path={page.path} element={page.component} />
-            ))}
-          </Route>
-          <Route element={<Error />}>
-            <Route path='*' element={<_404 />} />
-          </Route>
-        </Routes>
-      </AnimatePresence>
-    </BrowserRouter>
+    <AnimatePresence>
+      <Routes key={'routes'}>
+        <Route element={<Layout />}>
+          {routes.map((page, index) => (
+            <Route key={index} path={page.path} element={page.component} />
+          ))}
+        </Route>
+        <Route element={<Error />}>
+          <Route path='*' element={<_404 />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   );
 }
 

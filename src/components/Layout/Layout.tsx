@@ -16,6 +16,7 @@ function Layout() {
           className={`grow ${
             pathname === '/' ? 'bg-transparent' : 'bg-primary-dark'
           }`}
+          data-testid='main'
         >
           <Suspense>
             <Outlet />

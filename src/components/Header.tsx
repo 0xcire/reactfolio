@@ -14,11 +14,10 @@ function Header() {
       className={`relative flex justify-between items-center h-header w-full padding-x sm:py-6 text-text-dark 
       ${path === '/' ? 'bg-transparent' : 'bg-primary-dark'}`}
     >
-      <h1 className='font-bold text-2xl'>
-        <Link className='text-[28px]' to={`/`}>
-          EC
-        </Link>
-      </h1>
+      <Link className='text-[28px] font-bold text-2xl' to={`/`}>
+        EC
+      </Link>
+
       <div className='hidden sm:flex sm:items-center'>
         <div className='flex items-center justify-end'>
           <Link
@@ -34,8 +33,13 @@ function Header() {
         </div>
         <nav className='flex'>
           {links.map((link, index) => (
-            <Link className='ml-12 px-0 py-2' key={index} to={`/${link}`}>
-              <p className='leading-[100%]'>{link}</p>
+            <Link
+              className='ml-12 px-0 py-2'
+              key={index}
+              to={`/${link}`}
+              data-testid={link}
+            >
+              {link}
             </Link>
           ))}
         </nav>

@@ -94,7 +94,7 @@ export const folioData: folio = {
       img: ecfolio,
       title: 'EcFolio',
       stack:
-        'Tailwind | Framer Motion | TypeScript | React (Router) | Github Actions',
+        'Tailwind | Framer Motion | TypeScript | React (Router) | Github Actions | Jest',
       description:
         'The site you are on right now. Dove right into a more modern workflow and forced myself to learn via docs alone. Everything from Tailwind to Github Actions. Enjoyed not having to do everything from scratch.',
       links: {

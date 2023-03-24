@@ -20,7 +20,11 @@ function Portfolio() {
           staggerChildren: 0.1,
         }}
       >
-        <section id='portfolio' className='px-6 sm:px-12 lg:px-28'>
+        <section
+          id='portfolio'
+          className='px-6 sm:px-12 lg:px-28'
+          data-testid='portfolio-section'
+        >
           <div className='overflow-hidden'>
             <m.h1 className='text-3xl' variants={content}>
               {heading}

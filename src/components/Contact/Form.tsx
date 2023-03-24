@@ -5,18 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { m } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
 import { formData } from '../../data/data';
-
-const content = {
-  initial: { y: '100%', opacity: 0 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      bounce: 0.25,
-    },
-  },
-};
+import { content } from '../../data/data';
 
 type Inputs = {
   name: string;
@@ -38,6 +27,10 @@ const encode = (data: Record<string, string>) => {
     )
     .join('&');
 };
+
+// type TForm = {
+//   submission?: jest.Mock;
+// };
 
 function Form() {
   const { noti, placeholder, cta } = formData;
@@ -70,11 +63,12 @@ function Form() {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset({
-        name: '',
-        email: '',
-        message: '',
-      });
+      reset();
+      // reset({
+      //   name: '',
+      //   email: '',
+      //   message: '',
+      // });
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -138,6 +132,7 @@ function Form() {
         <m.button
           className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
           variants={content}
+          type='submit'
         >
           {cta.icon}
           {cta.text}

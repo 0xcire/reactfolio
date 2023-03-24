@@ -12,6 +12,7 @@ type LinkBtnProps = PropsWithChildren<{
   children?: ReactNode;
   target?: string;
   variants: Variants;
+  dataTestID?: string;
 }>;
 
 const LinkBtn: FC<LinkBtnProps> = ({
@@ -20,6 +21,7 @@ const LinkBtn: FC<LinkBtnProps> = ({
   className,
   children,
   variants,
+  dataTestID,
 }) => {
   const navigate = useNavigate();
   const handleNavigate = (url: string) => {
@@ -40,6 +42,7 @@ const LinkBtn: FC<LinkBtnProps> = ({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       variants={variants}
+      data-testid={dataTestID}
     >
       {icon ? icon : null}
       {children}

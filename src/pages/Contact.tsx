@@ -22,7 +22,10 @@ function Contact() {
           staggerDirection: -1,
         }}
       >
-        <section className='md:flex md:justify-between text-center md:text-left'>
+        <section
+          className='md:flex md:justify-between text-center md:text-left'
+          data-testid='contact-section'
+        >
           <div className='md:w-6/12'>
             <m.h1 className='text-2xl mt-12 md:mt-0' variants={content}>
               {heading}

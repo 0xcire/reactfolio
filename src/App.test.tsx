@@ -12,12 +12,11 @@ import App from './App';
 
 describe('App renders appropriate routes', () => {
   const user = userEvent.setup();
-  beforeEach(() => {
-    render(<App />, { wrapper: MemoryRouter });
-  });
+
   afterEach(cleanup);
 
   test('App renders Home', async () => {
+    render(<App />, { wrapper: MemoryRouter });
     expect(await findHomePage()).toBeInTheDocument();
 
     expectOtherPagesNotInDisplay([
@@ -28,6 +27,7 @@ describe('App renders appropriate routes', () => {
   });
 
   test('App renders Portfolio', async () => {
+    render(<App />, { wrapper: MemoryRouter });
     await waitFor(() => user.click(PortfolioLink()));
 
     expect(await findPortfolioPage()).toBeInTheDocument();
@@ -40,6 +40,7 @@ describe('App renders appropriate routes', () => {
   });
 
   test('App renders About', async () => {
+    render(<App />, { wrapper: MemoryRouter });
     await waitFor(() => user.click(AboutLink()));
 
     expect(await findAboutPage()).toBeInTheDocument();
@@ -52,6 +53,7 @@ describe('App renders appropriate routes', () => {
   });
 
   test('App renders Contact', async () => {
+    render(<App />, { wrapper: MemoryRouter });
     await waitFor(() => user.click(ContactLink()));
 
     expect(await findContactPage()).toBeInTheDocument();

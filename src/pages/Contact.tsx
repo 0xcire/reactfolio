@@ -4,6 +4,7 @@ import Form from '../components/Contact/Form';
 import { contactData } from '../data/data';
 import { link as TLink } from '../data/data';
 import { pageTransition, content } from '../data/data';
+import { sendFormData } from '../utils/sendFormData';
 
 function Contact() {
   const { heading, subheading, linksheading, links } = contactData;
@@ -54,7 +55,7 @@ function Contact() {
             </m.div>
           </div>
 
-          <Form />
+          <Form sendFormData={sendFormData} />
         </section>
       </m.div>
     </LazyMotion>

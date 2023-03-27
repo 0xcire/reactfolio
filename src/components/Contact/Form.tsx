@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { string, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { m } from 'framer-motion';
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { formData } from '../../data/data';
 import { content } from '../../data/data';
+// import { Mock } from 'vitest';
 
 type Inputs = {
   name: string;
@@ -19,56 +20,41 @@ const schema = z.object({
   message: string().min(1, { message: formData.schema.message }),
 });
 
-const encode = (data: Record<string, string>) => {
-  return Object.keys(data)
-    .map(
-      (key) =>
-        encodeURIComponent(key) + '=' + encodeURIComponent(data[key] as string)
-    )
-    .join('&');
+type TForm = {
+  sendFormData: (data: Inputs) => Promise<Response>;
 };
 
-// type TForm = {
-//   submission?: jest.Mock;
-// };
-
-function Form() {
+function Form({ sendFormData }: TForm) {
   const { noti, placeholder, cta } = formData;
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
   } = useForm<Inputs>({
+    mode: 'onBlur',
     resolver: zodResolver(schema),
   });
 
-  // TODO: useSendFormData()
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const attempt = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...data }),
-      });
-      if (!attempt.ok) {
+      const response = await sendFormData(data);
+      reset();
+      if (!response.ok) {
         toast.error(noti.error);
       } else {
         toast.success(noti.success);
       }
-    } catch (error) {
+    } catch (err) {
       toast.error(noti.error);
     }
+    reset();
   };
 
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
-      // reset({
-      //   name: '',
-      //   email: '',
-      //   message: '',
-      // });
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -85,11 +71,14 @@ function Form() {
         }}
       />
 
+      {/* <Input /> type text | text area | submit */}
+
       <form
         name='contact'
         method='POST'
         className='mt-8 md:mt-0'
         onSubmit={handleSubmit(onSubmit)}
+        data-testid='form'
       >
         <input type='hidden' name='form-name' value='contact' />
         <m.div
@@ -102,9 +91,11 @@ function Form() {
             placeholder={placeholder.name}
             {...register('name', { required: true })}
           />
-          <p className='text-sm text-error-dark rounded bg-primary-dark/[0.9]'>
-            {errors.name?.message}
-          </p>
+          {errors.name && (
+            <p className='text-sm text-error-dark' data-testid='name-error'>
+              {errors.name?.message}
+            </p>
+          )}
         </m.div>
 
         <m.div className='flex flex-col my-3' variants={content}>
@@ -114,7 +105,11 @@ function Form() {
             placeholder={placeholder.email}
             {...register('email', { required: true })}
           />
-          <p className='text-sm text-error-dark'>{errors.email?.message}</p>
+          {errors.email && (
+            <p className='text-sm text-error-dark' data-testid='email-error'>
+              {errors.email?.message}
+            </p>
+          )}
         </m.div>
 
         <m.div className='flex flex-col my-3' variants={content}>
@@ -126,13 +121,25 @@ function Form() {
             placeholder={placeholder.message}
             {...register('message', { required: true })}
           ></textarea>
-          <p className='text-sm text-accent-dark'>{errors.message?.message}</p>
+          {/* <input
+            type='text'
+            className='contact-input h-24'
+            id='message'
+            placeholder={placeholder.message}
+            {...register('message', { required: true })}
+          /> */}
+          {errors.message && (
+            <p className='text-sm text-accent-dark' data-testid='message-error'>
+              {errors.message.message}
+            </p>
+          )}
         </m.div>
 
         <m.button
           className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
           variants={content}
           type='submit'
+          data-testid='submit-btn'
         >
           {cta.icon}
           {cta.text}

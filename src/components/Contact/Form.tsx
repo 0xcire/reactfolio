@@ -4,11 +4,11 @@ import { string, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { m } from 'framer-motion';
 import { toast, Toaster } from 'react-hot-toast';
+import Input from './Input';
 import { formData } from '../../data/data';
 import { content } from '../../data/data';
-// import { Mock } from 'vitest';
 
-type Inputs = {
+export type InputFields = {
   name: string;
   email: string;
   message: string;
@@ -21,7 +21,7 @@ const schema = z.object({
 });
 
 type TForm = {
-  sendFormData: (data: Inputs) => Promise<Response>;
+  sendFormData: (data: InputFields) => Promise<Response>;
 };
 
 function Form({ sendFormData }: TForm) {
@@ -32,12 +32,12 @@ function Form({ sendFormData }: TForm) {
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
-  } = useForm<Inputs>({
+  } = useForm<InputFields>({
     mode: 'onBlur',
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<InputFields> = async (data) => {
     try {
       const response = await sendFormData(data);
       reset();
@@ -71,8 +71,6 @@ function Form({ sendFormData }: TForm) {
         }}
       />
 
-      {/* <Input /> type text | text area | submit */}
-
       <form
         name='contact'
         method='POST'
@@ -85,61 +83,42 @@ function Form({ sendFormData }: TForm) {
           className='flex flex-col my-3 md:my-0 relative'
           variants={content}
         >
-          <input
-            className='contact-input'
+          <Input
             type='text'
+            name='name'
             placeholder={placeholder.name}
-            {...register('name', { required: true })}
+            register={register}
+            rules={{ required: true }}
+            errors={errors}
           />
-          {errors.name && (
-            <p className='text-sm text-error-dark' data-testid='name-error'>
-              {errors.name?.message}
-            </p>
-          )}
         </m.div>
 
         <m.div className='flex flex-col my-3' variants={content}>
-          <input
-            className='contact-input'
+          <Input
             type='text'
+            name='email'
             placeholder={placeholder.email}
-            {...register('email', { required: true })}
+            register={register}
+            rules={{ required: true }}
+            errors={errors}
           />
-          {errors.email && (
-            <p className='text-sm text-error-dark' data-testid='email-error'>
-              {errors.email?.message}
-            </p>
-          )}
         </m.div>
 
         <m.div className='flex flex-col my-3' variants={content}>
-          <textarea
-            className='contact-input resize-none'
-            id='message'
-            cols={20}
-            rows={8}
+          <Input
+            Multiline={true}
+            name='message'
             placeholder={placeholder.message}
-            {...register('message', { required: true })}
-          ></textarea>
-          {/* <input
-            type='text'
-            className='contact-input h-24'
-            id='message'
-            placeholder={placeholder.message}
-            {...register('message', { required: true })}
-          /> */}
-          {errors.message && (
-            <p className='text-sm text-accent-dark' data-testid='message-error'>
-              {errors.message.message}
-            </p>
-          )}
+            register={register}
+            rules={{ required: true }}
+            errors={errors}
+          />
         </m.div>
 
         <m.button
           className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
           variants={content}
           type='submit'
-          data-testid='submit-btn'
         >
           {cta.icon}
           {cta.text}

@@ -34,8 +34,6 @@ jobs:
       - name: Build file
         run: npm run build
 
-      # to netlify
-      # TODO: update to netlify/actions/cli@master via: https://github.com/netlify/actions/tree/master/cli
       - name: Deploy prod to Netlify
         uses: South-Paw/action-netlify-deploy@v1.2.0
         with:

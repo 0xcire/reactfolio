@@ -4,24 +4,28 @@
 
 Visit [here](https://ecfolio.netlify.app/).
 
-## Currently built with...
+## Built with:
 
 - Tailwind CSS
 - Framer Motion
 
-- TypeScript
+- TypeScript / Zod
 - React / React Router / React Hook Form
-- Github Actions to Netlify
 - Vitest / Jest / React Testing Library
+- - Github Actions to Netlify
 
-### how?
+### process
 
-Built completely from just reading docs. Pretty confident in this style workflow but will be taking Full Stack Open to tie everything together now.
+After taking some extra time reacclimating myself with Vanilla JS / CSS, I decided to jump straight into a more modern workflow.
+
+As someone who has been stuck in tutorial hell before, I tried avoiding them and just learning via docs and etc. I think my extra time spent with the underlying languages helped not feel so overwhelmed and pick up how abstractions are implemented, but there are probably some holes I need to go back and fill. Especially with TypeScript.
 
 ### issues?
 
 Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
 
-Dove into Tailwind, TypeScipt, and React all at once without a course, just reading docs. Wasn't the worst experience, because I had fundamentals mostly down, but also wasn't the smoothest. Will be taking a few TypeScript courses (to properly learn how to extend other types), and tie the frontend together with the backend via [Full Stack Open](https://fullstackopen.com)
+Testing was surprisingly hard to get right.
 
-Especially before completing some of the larger scale projects I have in mind.
+I'm atrocious at picking colors.
+
+Probably have some holes I need to fill with TypeScript and React and will take some courses alongside [Full Stack Open](https://fullstackopen.com/en/) while building, to tie everything together.

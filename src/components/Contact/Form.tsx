@@ -6,7 +6,8 @@ import { m } from 'framer-motion';
 import { toast, Toaster } from 'react-hot-toast';
 import Input from './Input';
 import { formData } from '../../data/data';
-import { content } from '../../data/data';
+import { springReveal } from '../../data/data';
+import HideOverflow from '../Layout/HideOverflow';
 
 export type InputFields = {
   name: string;
@@ -79,50 +80,58 @@ function Form({ sendFormData }: TForm) {
         data-testid='form'
       >
         <input type='hidden' name='form-name' value='contact' />
-        <m.div
-          className='flex flex-col my-3 md:my-0 relative'
-          variants={content}
-        >
-          <Input
-            type='text'
-            name='name'
-            placeholder={placeholder.name}
-            register={register}
-            rules={{ required: true }}
-            errors={errors}
-          />
-        </m.div>
+        <HideOverflow>
+          <m.div
+            className='flex flex-col my-3 md:my-0 relative'
+            variants={springReveal}
+          >
+            <Input
+              type='text'
+              name='name'
+              placeholder={placeholder.name}
+              register={register}
+              rules={{ required: true }}
+              errors={errors}
+            />
+          </m.div>
+        </HideOverflow>
 
-        <m.div className='flex flex-col my-3' variants={content}>
-          <Input
-            type='text'
-            name='email'
-            placeholder={placeholder.email}
-            register={register}
-            rules={{ required: true }}
-            errors={errors}
-          />
-        </m.div>
+        <HideOverflow>
+          <m.div className='flex flex-col my-3' variants={springReveal}>
+            <Input
+              type='text'
+              name='email'
+              placeholder={placeholder.email}
+              register={register}
+              rules={{ required: true }}
+              errors={errors}
+            />
+          </m.div>
+        </HideOverflow>
 
-        <m.div className='flex flex-col my-3' variants={content}>
-          <Input
-            Multiline={true}
-            name='message'
-            placeholder={placeholder.message}
-            register={register}
-            rules={{ required: true }}
-            errors={errors}
-          />
-        </m.div>
+        <HideOverflow>
+          <m.div className='flex flex-col' variants={springReveal}>
+            <Input
+              Multiline={true}
+              name='message'
+              placeholder={placeholder.message}
+              register={register}
+              rules={{ required: true }}
+              errors={errors}
+            />
+          </m.div>
+        </HideOverflow>
 
-        <m.button
-          className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
-          variants={content}
-          type='submit'
-        >
-          {cta.icon}
-          {cta.text}
-        </m.button>
+        <HideOverflow className='mt-3'>
+          <m.button
+            className='py-2 px-5 flex items-center rounded text-center bg-accent-dark text-text-light mx-auto'
+            variants={springReveal}
+            type='submit'
+          >
+            {cta.icon}
+            {cta.text}
+          </m.button>
+        </HideOverflow>
       </form>
     </m.div>
   );

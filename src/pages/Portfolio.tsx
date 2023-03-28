@@ -1,7 +1,8 @@
 import { LazyMotion, m, domAnimation } from 'framer-motion';
+import HideOverflow from '../components/Layout/HideOverflow';
 import ProjectCard from '../components/Portfolio/ProjectCard';
 import { folioData } from '../data/data';
-import { pageTransition, content } from '../data/data';
+import { pageTransition, springReveal } from '../data/data';
 
 function Portfolio() {
   const { heading, subheading } = folioData.headings;
@@ -25,15 +26,21 @@ function Portfolio() {
           className='px-6 sm:px-12 lg:px-28'
           data-testid='portfolio-section'
         >
-          <div className='overflow-hidden'>
-            <m.h1 className='text-3xl' variants={content}>
+          <HideOverflow>
+            <m.h1 className='text-3xl' variants={springReveal}>
               {heading}
             </m.h1>
-          </div>
+          </HideOverflow>
 
-          <m.p className='mb-12 xl:text-[18px]' variants={content}>
-            {subheading}
-          </m.p>
+          <HideOverflow className='mb-12'>
+            <m.p
+              className='xl:text-[18px] overflow-hidden'
+              variants={springReveal}
+            >
+              {subheading}
+            </m.p>
+          </HideOverflow>
+
           <div className='sm:w-8/12 sm:mx-auto lg:w-full lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3'>
             {projects.map((project, index) => (
               <ProjectCard

@@ -86,7 +86,7 @@ function StarryNight() {
             return (
               <m.div
                 key={index}
-                className='wish absolute h-[2px] w-[0px] p-0 bg-black opacity-0 bg-gradient-to-tr from-[#f0ebd8] to-[rgba(0, 0, 255, 0)]'
+                className='wish absolute h-[2px] w-[0px] p-0 bg-black opacity-0 bg-gradient-to-tr from-text-dark to-[rgba(0, 0, 255, 0)]'
                 style={{
                   top: `${randomPercentage()}%`,
                   left: `${randomPercentage()}%`,

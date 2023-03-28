@@ -1,8 +1,9 @@
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import SkillFiles from '../components/About/SkillTree';
+import HideOverflow from '../components/Layout/HideOverflow';
 import LinkBtn from '../components/LinkBtn';
 import { aboutData } from '../data/data';
-import { pageTransition, content } from '../data/data';
+import { pageTransition, springReveal } from '../data/data';
 
 function About() {
   const { heading, paragraphs, skills, cta } = aboutData;
@@ -24,34 +25,37 @@ function About() {
           className='padding-x py-12 h-[inherit] md:grid md:grid-cols-[1fr,2fr] 2xl:grid-cols-[0.75fr,2fr]'
           data-testid='about-section'
         >
-          <div className='order-2 overflow-hidden'>
+          <HideOverflow className='order-2'>
             <m.h1
               className='text-2xl leading-none max-w-[600px]'
-              variants={content}
+              variants={springReveal}
             >
               {heading}
             </m.h1>
-          </div>
+          </HideOverflow>
+
           <div>{''}</div>
 
-          <m.div
-            className='mt-8 text-wrapper max-w-[450px] xl:max-w-[650px] order-4 sm:text-base leading-relaxed 2xl:leading-relaxed'
-            variants={content}
-          >
-            {paragraphs.map((text, index) => (
-              <p className='my-4' key={index}>
-                {text}
-              </p>
-            ))}
-            <LinkBtn
-              url='/Contact'
-              className='mt-6 block'
-              variants={content}
-              dataTestID={'about-cta'}
+          <HideOverflow className='order-4 mt-8'>
+            <m.div
+              className='text-wrapper max-w-[450px] xl:max-w-[650px] sm:text-base leading-relaxed 2xl:leading-relaxed'
+              variants={springReveal}
             >
-              {cta}
-            </LinkBtn>
-          </m.div>
+              {paragraphs.map((text, index) => (
+                <p className='my-4' key={index}>
+                  {text}
+                </p>
+              ))}
+              <LinkBtn
+                url='/Contact'
+                className='mt-6 block'
+                dataTestID={'about-cta'}
+              >
+                {cta}
+              </LinkBtn>
+            </m.div>
+          </HideOverflow>
+
           <SkillFiles skills={skills} />
         </section>
       </m.div>

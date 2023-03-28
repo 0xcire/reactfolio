@@ -1,9 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { m, Variants } from 'framer-motion';
-
-// TODO: look at clsx, tailwind merge to replace below 'className' prop
-// or at least, be cognizent for next project
+import { twMerge } from 'tailwind-merge';
 
 type LinkBtnProps = PropsWithChildren<{
   url: string;
@@ -11,7 +9,7 @@ type LinkBtnProps = PropsWithChildren<{
   className: string;
   children?: ReactNode;
   target?: string;
-  variants: Variants;
+  variants?: Variants;
   dataTestID?: string;
 }>;
 
@@ -34,14 +32,14 @@ const LinkBtn: FC<LinkBtnProps> = ({
 
   return (
     <m.button
-      className={
-        `w-fit px-5 py-2 text-text-light bg-accent-dark rounded-md` +
-        ` ${className}`
-      }
+      className={twMerge(
+        'w-fit px-5 py-2 text-text-light bg-accent-dark rounded-md',
+        className
+      )}
       onClick={() => handleNavigate(url)}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      variants={variants}
+      variants={variants as Variants}
       data-testid={dataTestID}
     >
       {icon ? icon : null}

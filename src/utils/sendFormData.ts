@@ -1,8 +1,4 @@
-type Inputs = {
-  name: string;
-  email: string;
-  message: string;
-};
+import { InputFields } from '../components/Contact/Form';
 
 const encode = (data: Record<string, string>) => {
   return Object.keys(data)
@@ -13,7 +9,7 @@ const encode = (data: Record<string, string>) => {
     .join('&');
 };
 
-export const sendFormData = async (data: Inputs) => {
+export const sendFormData = async (data: InputFields): Promise<Response> => {
   const response = await fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

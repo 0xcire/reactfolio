@@ -124,7 +124,6 @@ describe('<Form /> behaves correctly', () => {
   const getMessageErrorMsg = () => screen.getByTestId('message-error');
 
   const expectMockSubmitToNotBeCalled = async () => {
-    // await waitFor(() => user.click(getSubmitButton()));
     await waitFor(() => fireEvent.submit(getForm()));
     expect(mockSendFormData).toBeCalledTimes(0);
   };

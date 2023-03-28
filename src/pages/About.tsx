@@ -52,9 +52,6 @@ function About() {
               {cta}
             </LinkBtn>
           </m.div>
-          {/* <LinkBtn url='/Contact' className='mt-6 block' variants={content}>
-            {cta}
-          </LinkBtn> */}
           <SkillFiles skills={skills} />
         </section>
       </m.div>

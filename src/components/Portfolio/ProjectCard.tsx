@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 import LinkBtn from '../LinkBtn';
 import { projectlink } from '../../data/data';
+import { content } from '../../data/data';
 
 type CardProps = {
   image: string;
@@ -8,18 +9,6 @@ type CardProps = {
   stack: string;
   description: string;
   links: projectlink;
-};
-
-const content = {
-  initial: { y: '35%', opacity: 0 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      bounce: 0.25,
-    },
-  },
 };
 
 function ProjectCard({ image, title, stack, description, links }: CardProps) {

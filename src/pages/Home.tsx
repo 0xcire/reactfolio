@@ -1,11 +1,14 @@
 import { domAnimation, LazyMotion, m } from 'framer-motion';
+import Typewriter from 'typewriter-effect';
 import LinkBtn from '../components/LinkBtn';
 import StarryNight from '../components/StarryNight';
+import Delay from '../components/Layout/Delay';
 import { homeData } from '../data/data';
-import { pageTransition, content } from '../data/data';
+import { pageTransition, springReveal } from '../data/data';
+import HideOverflow from '../components/Layout/HideOverflow';
 
 function Home() {
-  const { heading, emoji, subheading, cta } = homeData;
+  const { heading, emoji, subheading, descriptors, cta } = homeData;
   return (
     <>
       <LazyMotion features={domAnimation} strict>
@@ -24,29 +27,44 @@ function Home() {
             className='w-full flex flex-col sm:text-center'
             data-testid='home-section'
           >
-            <div className=' overflow-hidden flex sm:justify-center'>
+            <HideOverflow className='flex sm:justify-center'>
               <m.h1
                 className='text-5xl font-bold overflow-y-hidden
                 bg-gradient-to-r from-slate-400 to-purple-700 bg-clip-text text-fill-transparent'
-                variants={content}
+                variants={springReveal}
               >
                 {heading}
               </m.h1>
-              <m.p className='text-2xl xl:text-3xl' variants={content}>
+              <m.p className='text-2xl xl:text-3xl' variants={springReveal}>
                 {emoji}
               </m.p>
-            </div>
-            <m.p className='mt-2 xl:text-[18px]' variants={content}>
-              {subheading}
-            </m.p>
-            <LinkBtn
-              url='/Portfolio'
-              className='home-cta mt-6 sm:mx-auto'
-              variants={content}
-              dataTestID={'home-cta'}
-            >
-              {cta}
-            </LinkBtn>
+            </HideOverflow>
+
+            <HideOverflow className='flex items-center sm:mx-auto mt-2'>
+              <m.p className='xl:text-[18px] mr-1' variants={springReveal}>
+                {subheading}
+              </m.p>
+              <Delay wait={600}>
+                <Typewriter
+                  options={{
+                    strings: descriptors,
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </Delay>
+            </HideOverflow>
+
+            <HideOverflow>
+              <LinkBtn
+                url='/Portfolio'
+                className='home-cta mt-6 sm:mx-auto'
+                variants={springReveal}
+                dataTestID={'home-cta'}
+              >
+                {cta}
+              </LinkBtn>
+            </HideOverflow>
           </m.section>
         </m.div>
         <StarryNight />

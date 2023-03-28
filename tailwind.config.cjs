@@ -17,28 +17,21 @@ module.exports = {
         footer: '75px',
       },
       // light?: #cfdbd5, #e8eddf, #E7BB41, #242423, #333533
-      // TODO: update theme so that:
-      // #14213d = primary-dark
-      // #241500 secondary-dark; something around here just not #000
-      // #fca311 accent unless can curate a better burnt orange to represent 'sun'
-      // #e5e5e5 eh
-      // #f4f4f4
-      // #f0ebd8
       colors: {
         primary: {
-          light: '#e8eddf',
+          light: '',
           dark: '#14213d',
         },
         secondary: {
-          light: '#333533',
-          dark: '#6d3a9c',
+          light: '',
+          dark: '#203258',
         },
         text: {
           light: '#242423',
           dark: '#f0ebd8',
         },
         accent: {
-          light: '#E7BB41',
+          light: '',
           dark: '#fca311',
         },
         neutral: {

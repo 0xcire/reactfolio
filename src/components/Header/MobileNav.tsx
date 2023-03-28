@@ -66,7 +66,7 @@ function MobileNav() {
               transition={{ duration: 0.15 }}
               variants={navVariants}
               className='absolute top-[100%] right-0 w-5/12 h-[calc(100svh-theme(height.header))] 
-                         pr-6 flex flex-col justify-end w-max-content bg-[#14213d]/[0.5] backdrop-blur-sm text-text-dark z-10'
+                         pr-6 flex flex-col justify-end w-max-content bg-primary-dark/[0.5] backdrop-blur-sm text-text-dark z-10'
             >
               <NavLinks isMobile={true} toggleMenu={toggleMenu} />
             </m.div>

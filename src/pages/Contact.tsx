@@ -3,8 +3,9 @@ import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Form from '../components/Contact/Form';
 import { contactData } from '../data/data';
 import { link as TLink } from '../data/data';
-import { pageTransition, content } from '../data/data';
+import { pageTransition, springReveal } from '../data/data';
 import { sendFormData } from '../utils/sendFormData';
+import HideOverflow from '../components/Layout/HideOverflow';
 
 function Contact() {
   const { heading, subheading, linksheading, links } = contactData;
@@ -20,7 +21,6 @@ function Contact() {
         transition={{
           delayChildren: 0.15,
           staggerChildren: 0.1,
-          staggerDirection: -1,
         }}
       >
         <section
@@ -28,17 +28,21 @@ function Contact() {
           data-testid='contact-section'
         >
           <div className='md:w-6/12'>
-            <m.h1 className='text-2xl mt-12 md:mt-0' variants={content}>
-              {heading}
-            </m.h1>
+            <HideOverflow>
+              <m.h1 className='text-2xl mt-12 md:mt-0' variants={springReveal}>
+                {heading}
+              </m.h1>
+            </HideOverflow>
 
-            <m.p className='sm:pr-6' variants={content}>
-              {subheading}
-            </m.p>
-            <m.h2 className='text-2xl mt-8' variants={content}>
-              {linksheading}
-            </m.h2>
-            <m.div variants={content}>
+            <p className='sm:pr-6'>{subheading}</p>
+
+            <HideOverflow>
+              <m.h2 className='text-2xl mt-8' variants={springReveal}>
+                {linksheading}
+              </m.h2>
+            </HideOverflow>
+
+            <div>
               {Object.keys(links).map((link, index) => (
                 <Link
                   key={index}
@@ -52,7 +56,7 @@ function Contact() {
                   </>
                 </Link>
               ))}
-            </m.div>
+            </div>
           </div>
 
           <Form sendFormData={sendFormData} />

@@ -10,6 +10,7 @@ import {
 import cardle from '../assets/images/cardle.webp';
 import todo from '../assets/images/todo.webp';
 import ecfolio from '../assets/images/ecfolio.webp';
+import { easeInOut } from 'framer-motion';
 
 // ==============================================
 // COMMON
@@ -24,7 +25,7 @@ export const pageTransition: TPage = {
   exit: { opacity: 0 },
 };
 
-export const content = {
+export const springReveal = {
   initial: { y: '100%', opacity: 0 },
   animate: {
     y: 0,
@@ -32,6 +33,18 @@ export const content = {
     transition: {
       type: 'spring',
       bounce: 0.3,
+    },
+  },
+};
+
+export const fadeIn = {
+  initial: { y: '100%', opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: easeInOut,
+      duration: 0.5,
     },
   },
 };
@@ -54,14 +67,23 @@ type home = {
   heading: string;
   emoji: string;
   subheading: string;
+  descriptors: string[];
   cta: string;
 };
 export const homeData: home = {
   heading: "Hi, I'm Eric.",
   emoji: '🚀',
-  // TODO: this will be array of interests in future to animate, or maybe put on about page
-  subheading: 'I am a Full-Stack Developer.',
-  // cta: ['My Work', 'Learn More'],
+  subheading: 'I am a ',
+  descriptors: [
+    'Front End Developer',
+    'Back End Developer',
+    'Full Stack Developer',
+    'wannabe boxer',
+    'car enthusiast',
+    'motoGP fan',
+    'martial artist',
+    'gamer',
+  ],
   cta: 'View My Work',
 };
 

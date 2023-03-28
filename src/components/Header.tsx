@@ -1,8 +1,7 @@
 import { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import NavLinks from './Header/NavLinks';
 import MobileNav from './Header/MobileNav';
-import { links } from '../data/data';
 
 function Header() {
   const headingRef = useRef<HTMLDivElement>(null);
@@ -19,32 +18,9 @@ function Header() {
       </Link>
 
       <div className='hidden sm:flex sm:items-center'>
-        <div className='flex items-center justify-end'>
-          <Link
-            className='mr-6'
-            to={`https://github.com/0xcire`}
-            target='_blank'
-          >
-            <GithubLogo size={26} />
-          </Link>
-          <Link to={`https://www.linkedin.com/in/ericchi1/`} target='_blank'>
-            <LinkedinLogo size={26} />
-          </Link>
-        </div>
-        <nav className='flex'>
-          {links.map((link, index) => (
-            <Link
-              className='ml-12 px-0 py-2'
-              key={index}
-              to={`/${link}`}
-              data-testid={link}
-            >
-              {link}
-            </Link>
-          ))}
-        </nav>
+        <NavLinks isMobile={false} />
       </div>
-      <MobileNav links={links} />
+      <MobileNav />
     </header>
   );
 }

@@ -2,7 +2,7 @@ import { FC, PropsWithChildren, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { m, Variants } from 'framer-motion';
 
-// look at clsx, tailwind merge to replace below 'className' prop
+// TODO: look at clsx, tailwind merge to replace below 'className' prop
 // or at least, be cognizent for next project
 
 type LinkBtnProps = PropsWithChildren<{

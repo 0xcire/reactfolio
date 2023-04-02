@@ -1,11 +1,9 @@
 // idea from my firefox theme
 // saw an implementation via this codepen: https://codepen.io/sharnajh/pen/WNvppRy
-
 // stretch: big dipper constellation
 // star count by screen size
-
-import { LazyMotion, m, domAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 const starVariants = {
   show: { opacity: 1 },
@@ -49,8 +47,8 @@ function StarryNight() {
   }, []);
 
   return (
-    <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none'>
-      <svg className='sky absolute left-0 w-screen h-full bg-primary-dark z-[-3]'>
+    <div className='pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden'>
+      <svg className='sky absolute left-0 z-[-3] h-full w-screen bg-primary-dark'>
         <LazyMotion features={domAnimation}>
           {[...Array(60)].map((_star, index) => {
             return (
@@ -80,13 +78,13 @@ function StarryNight() {
       {/* TODO: is a potential perf optimization to create svg lines and animate
       the path drawing? could potentially solve weird off screen rotated parent div
       conundrum*/}
-      <div className='shootingStars absolute top-0 w-[150vw] sm:w-[120vw] lg:w-[115vw] xl:w-[100vw] 2xl:w-[80vw] h-[100vh] lg:h-[120vh] xl:h-[130vh] 2xl:h-[110vh] -rotate-[30deg] translate-x-[-20%] sm:translate-x-[-10%] lg:translate-x-[-5%] xl:translate-x-[2.5%] 2xl:translate-x-[12%] sm:translate-y-[0%] lg:translate-y-[-5%] xl:translate-y-[-5%] 2xl:translate-y-[-5%] z-[-1]'>
+      <div className='shootingStars absolute top-0 z-[-1] h-[100vh] w-[150vw] translate-x-[-20%] -rotate-[30deg] sm:w-[120vw] sm:translate-x-[-10%] sm:translate-y-[0%] lg:h-[120vh] lg:w-[115vw] lg:translate-x-[-5%] lg:translate-y-[-5%] xl:h-[130vh] xl:w-[100vw] xl:translate-x-[2.5%] xl:translate-y-[-5%] 2xl:h-[110vh] 2xl:w-[80vw] 2xl:translate-x-[12%] 2xl:translate-y-[-5%]'>
         <LazyMotion features={domAnimation}>
           {[...Array(10)].map((_shootingStar, index) => {
             return (
               <m.div
                 key={index}
-                className='wish absolute h-[2px] w-[0px] p-0 bg-black opacity-0 bg-gradient-to-tr from-text-dark to-[rgba(0, 0, 255, 0)]'
+                className='wish to-[rgba(0, 0, 255, 0)] absolute h-[2px] w-[0px] bg-black bg-gradient-to-tr from-text-dark p-0 opacity-0'
                 style={{
                   top: `${randomPercentage()}%`,
                   left: `${randomPercentage()}%`,

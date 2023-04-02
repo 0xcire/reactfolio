@@ -1,9 +1,9 @@
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { File, Folder, FolderOpen } from '@phosphor-icons/react';
 
 type DirProps = {
   title: string;
-  files: string[] | undefined;
+  files: Array<string> | undefined;
 };
 
 function Directory({ title, files }: DirProps) {
@@ -21,7 +21,7 @@ function Directory({ title, files }: DirProps) {
     <details ref={detailsRef} open>
       <summary
         onClick={toggleOpen}
-        className='flex items-center rounded-md hover:bg-neutral-dark  cursor-pointer'
+        className='flex cursor-pointer items-center rounded-md  hover:bg-neutral-dark'
       >
         {isOpen ? (
           <FolderOpen className='mr-1' size={20} />

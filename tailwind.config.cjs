@@ -10,7 +10,7 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        '2k': '1600px',
+        '2k': '1400px',
       },
       height: {
         header: '100px',

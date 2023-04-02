@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import NavLinks from './Header/NavLinks';
-import MobileNav from './Header/MobileNav';
+
+import MobileNav from '@/components/Header/MobileNav';
+import NavLinks from '@/components/Header/NavLinks';
 
 function Header() {
   const headingRef = useRef<HTMLDivElement>(null);
@@ -10,16 +11,17 @@ function Header() {
   return (
     <header
       ref={headingRef}
-      className={`relative flex justify-between items-center h-header w-full padding-x sm:py-6 text-text-dark 
+      className={`padding-x relative flex h-header w-full items-center justify-between text-text-dark sm:py-6 
       ${path === '/' ? 'bg-transparent' : 'bg-primary-dark'}`}
     >
-      <Link className='text-[28px] font-bold text-2xl' to={`/`}>
+      <Link className='text-[28px] text-2xl font-bold' to={`/`}>
         EC
       </Link>
 
       <div className='hidden sm:flex sm:items-center'>
         <NavLinks isMobile={false} />
       </div>
+
       <MobileNav />
     </header>
   );

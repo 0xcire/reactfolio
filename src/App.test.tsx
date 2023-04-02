@@ -91,7 +91,7 @@ describe('App renders appropriate routes', () => {
   const findContactPage = async () =>
     await screen.findByTestId('contact-section');
 
-  const expectOtherPagesNotInDisplay = (pages: string[]) => {
+  const expectOtherPagesNotInDisplay = (pages: Array<string>) => {
     for (let i = 0; i < pages.length; i++) {
       expect(screen.queryByTestId(pages[i] as Matcher)).toBeNull();
     }

@@ -1,11 +1,13 @@
 import { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Layout from './components/Layout/Layout';
-import Error from './components/Layout/Error';
-const _404 = lazy(() => import('./pages/_404'));
 
-import routes from './pages/routes';
+import Error from '@/components/Layout/Error';
+import Layout from '@/components/Layout/Layout';
+
+const _404 = lazy(() => import('@/routes/_404'));
+
+import routes from './routes';
 
 function App() {
   return (

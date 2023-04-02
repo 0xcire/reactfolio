@@ -1,8 +1,9 @@
 import { m } from 'framer-motion';
+
 import Directory from './Directory';
-import { skillTree } from '../../data/data';
-import { springReveal } from '../../data/data';
-import HideOverflow from '../Layout/HideOverflow';
+import HideOverflow from '@/components/Layout/HideOverflow';
+
+import { skillTree, springReveal } from '@/data/data';
 
 type treeProps = {
   skills: skillTree;
@@ -13,7 +14,7 @@ function SkillTree({ skills }: treeProps) {
   return (
     <HideOverflow className='order-3'>
       <m.div
-        className='w-6/12 mt-8 md:mt-[52px] md:w-full'
+        className='mt-8 w-6/12 md:mt-[52px] md:w-full'
         variants={springReveal}
         transition={{
           delayChildren: 0.15,
@@ -21,8 +22,8 @@ function SkillTree({ skills }: treeProps) {
         }}
       >
         <details open>
-          <summary className='cursor-pointer w-full'>SKILLS:</summary>
-          <div className='mt-2 skills flex flex-col justify-between md:w-10/12 xl:w-8/12'>
+          <summary className='w-full cursor-pointer'>SKILLS:</summary>
+          <div className='skills mt-2 flex flex-col justify-between md:w-10/12 xl:w-8/12'>
             {skillKeys.map((skill, index) => (
               <Directory
                 key={index}

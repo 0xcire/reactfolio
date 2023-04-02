@@ -7,7 +7,7 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Form from './Form';
+import Form from '../components/Form';
 
 const testData = {
   name: {

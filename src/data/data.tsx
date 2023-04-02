@@ -1,27 +1,30 @@
+import { Variants } from 'framer-motion';
 import {
-  Code,
   Browser,
+  Code,
   EnvelopeSimple,
-  LinkedinLogo,
   GithubLogo,
+  LinkedinLogo,
   PaperPlaneTilt,
 } from '@phosphor-icons/react';
 
-import cardle from '../assets/images/cardle.webp';
-import todo from '../assets/images/todo.webp';
-import ecfolio from '../assets/images/ecfolio.webp';
-import { easeInOut } from 'framer-motion';
+import cardle from '@/assets/images/cardle.webp';
+import ecfolio from '@/assets/images/ecfolio.webp';
+import todo from '@/assets/images/todo.webp';
 
 // ==============================================
 // COMMON
 // ==============================================
-type animateSteps = 'initial' | 'animate' | 'exit';
-type pageAnimation = Record<'opacity', number>;
-type TPage = Record<animateSteps, pageAnimation>;
 
-export const pageTransition: TPage = {
+export const pageTransition: Variants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
+    },
+  },
   exit: { opacity: 0 },
 };
 
@@ -37,19 +40,7 @@ export const springReveal = {
   },
 };
 
-export const fadeIn = {
-  initial: { y: '100%', opacity: 0 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      ease: easeInOut,
-      duration: 0.5,
-    },
-  },
-};
-
-export const links: string[] = ['Portfolio', 'About', 'Contact'];
+export const links: Array<string> = ['Portfolio', 'About', 'Contact'];
 
 export type ctaProps = {
   icon: JSX.Element;
@@ -67,7 +58,7 @@ type home = {
   heading: string;
   emoji: string;
   subheading: string;
-  descriptors: string[];
+  descriptors: Array<string>;
   cta: string;
 };
 export const homeData: home = {
@@ -103,7 +94,7 @@ type project = {
 type headings = 'heading' | 'subheading';
 type folio = {
   headings: Record<headings, string>;
-  projects: project[];
+  projects: Array<project>;
 };
 export const folioData: folio = {
   headings: {
@@ -171,10 +162,10 @@ export const folioData: folio = {
 // ABOUT
 // ==============================================
 type skill = '.github' | 'client' | 'server';
-export type skillTree = Record<skill, string[]>;
+export type skillTree = Record<skill, Array<string>>;
 type about = {
   heading: JSX.Element;
-  paragraphs: string[];
+  paragraphs: Array<string>;
   skills: skillTree;
   cta: string;
 };

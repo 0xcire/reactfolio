@@ -5,7 +5,7 @@ function Footer() {
 
   return (
     <footer
-      className={`h-footer grid place-items-center text-text-dark text-center text-[11px] xl:text-[13px] 
+      className={`grid h-footer place-items-center text-center text-[11px] text-text-dark xl:text-[13px] 
               ${path === '/' ? 'bg-transparent' : 'bg-primary-dark'}`}
     >
       <div>&copy; 2023 EC</div>

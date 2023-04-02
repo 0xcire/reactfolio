@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { m, Variants } from 'framer-motion';
+import { Variants, m } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
 type LinkBtnProps = PropsWithChildren<{
@@ -33,12 +33,12 @@ const LinkBtn: FC<LinkBtnProps> = ({
   return (
     <m.button
       className={twMerge(
-        'w-fit px-5 py-2 text-text-light bg-accent-dark rounded-md',
+        'w-fit rounded-md bg-accent-dark px-5 py-2 text-text-light',
         className
       )}
       onClick={() => handleNavigate(url)}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 0.95 }}
+      whileTap={{ scale: 0.9 }}
       variants={variants as Variants}
       data-testid={dataTestID}
     >

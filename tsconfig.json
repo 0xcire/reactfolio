@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false, // true?
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "noImplicitAny": true,
@@ -30,7 +33,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx" //preserve?
+    "jsx": "react-jsx"
   },
   "include": ["src", "./src/setupTest.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

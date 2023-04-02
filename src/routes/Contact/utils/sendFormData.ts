@@ -1,4 +1,4 @@
-import { InputFields } from '../components/Contact/Form';
+import { InputFields } from '../components/Form';
 
 const encode = (data: Record<string, string>) => {
   return Object.keys(data)

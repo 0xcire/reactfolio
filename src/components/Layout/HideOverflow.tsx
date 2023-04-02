@@ -8,7 +8,9 @@ type THideOverflow = PropsWithChildren<{
 
 const HideOverflow: FC<THideOverflow> = ({ children, className }) => {
   return (
-    <div className={twMerge('overflow-hidden', className)}>{children}</div>
+    <div className={twMerge('overflow-hidden p-[1px]', className)}>
+      {children}
+    </div>
   );
 };
 

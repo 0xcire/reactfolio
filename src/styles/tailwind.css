@@ -55,6 +55,6 @@
     @apply px-6 sm:px-12 lg:px-28;
   }
   .contact-input {
-    @apply px-2 py-3 rounded bg-secondary-dark text-text-dark  placeholder:text-text-dark focus:outline focus:outline-1 focus:outline-text-dark;
+    @apply rounded bg-secondary-dark px-2 py-3 text-text-dark  placeholder:text-text-dark focus:outline focus:outline-1 focus:outline-text-dark;
   }
 }

@@ -40,7 +40,7 @@ function MobileNav() {
       }
     };
 
-    document.addEventListener('keydown', handleEscKey, { once: true });
+    document.addEventListener('keydown', handleEscKey);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
@@ -50,8 +50,8 @@ function MobileNav() {
   }, [toggleMenu]);
 
   return (
-    <>
-      <button className='menu-btn sm:hidden' onClick={toggleMenu}>
+    <div className='sm:hidden'>
+      <button className='menu-btn' onClick={toggleMenu}>
         <Hamburger mobileMenuOpen={mobileMenuOpen} />
       </button>
       <AnimatePresence>
@@ -65,15 +65,15 @@ function MobileNav() {
               exit={'closed'}
               transition={{ duration: 0.15 }}
               variants={navVariants}
-              className='absolute top-[100%] right-0 w-5/12 h-[calc(100svh-theme(height.header))] 
-                         pr-6 flex flex-col justify-end w-max-content bg-primary-dark/[0.5] backdrop-blur-sm text-text-dark z-10'
+              className='w-max-content absolute top-[100%] right-0 z-10 
+                         flex h-[calc(100svh-theme(height.header))] w-5/12 flex-col justify-end bg-primary-dark/[0.5] pr-6 text-text-dark backdrop-blur-sm'
             >
               <NavLinks isMobile={true} toggleMenu={toggleMenu} />
             </m.div>
           </LazyMotion>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 

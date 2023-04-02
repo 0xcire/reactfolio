@@ -1,8 +1,9 @@
 import { m } from 'framer-motion';
-import LinkBtn from '../LinkBtn';
-import { projectlink } from '../../data/data';
-import { springReveal } from '../../data/data';
-import HideOverflow from '../Layout/HideOverflow';
+
+import HideOverflow from '@/components/Layout/HideOverflow';
+import LinkBtn from '@/components/LinkBtn';
+
+import { projectlink, springReveal } from '@/data/data';
 
 type CardProps = {
   image: string;
@@ -16,12 +17,12 @@ function ProjectCard({ image, title, stack, description, links }: CardProps) {
   return (
     <HideOverflow className='pt-6'>
       <m.div
-        className='flex flex-col justify-between rounded-md shadow-md shadow-[#121d2c] mb-12 lg:my-0'
+        className='mb-12 flex flex-col justify-between rounded-md shadow-md shadow-[#121d2c] lg:my-0'
         variants={springReveal}
       >
         <div className=''>
           <img
-            className='rounded-md w-full h-auto xl:h-full xl:w-auto xl:my-auto'
+            className='h-auto w-full rounded-md xl:my-auto xl:h-full xl:w-auto'
             src={image}
             alt={`${title}-img`}
             loading='lazy'
@@ -29,13 +30,13 @@ function ProjectCard({ image, title, stack, description, links }: CardProps) {
         </div>
 
         <div className='card-body'>
-          <div className='card-text  mt-4 py-4 xl:pt-0 px-12'>
-            <h3 className='font-bold text-xl'>{title}</h3>
+          <div className='card-text  mt-4 py-4 px-12 xl:pt-0'>
+            <h3 className='text-xl font-bold'>{title}</h3>
 
             <p className='stack my-2 text-[13px]'>{stack}</p>
             <p>{description}</p>
           </div>
-          <div className='buttons flex justify-between my-4 px-12'>
+          <div className='buttons my-4 flex justify-between px-12'>
             {Object.keys(links).map((link, index) => (
               <LinkBtn
                 key={index}

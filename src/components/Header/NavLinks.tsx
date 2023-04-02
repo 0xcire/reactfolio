@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { links } from '../../data/data';
+import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import { Link, NavLink } from 'react-router-dom';
 
 type TNav = {
   isMobile: boolean;
@@ -33,15 +33,19 @@ function NavLinks({ isMobile, toggleMenu }: TNav) {
       </div>
       <nav className={navClassName}>
         {links.map((link, index) => (
-          <Link
-            className={linkClassName}
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? `${linkClassName} text-text-dark`
+                : `${linkClassName} text-slate-400`
+            }
             key={index}
             to={`/${link}`}
             data-testid={!isMobile ? link : undefined}
             onClick={isMobile ? toggleMenu : undefined}
           >
             {link}
-          </Link>
+          </NavLink>
         ))}
       </nav>
     </>

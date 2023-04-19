@@ -14,7 +14,7 @@
 
 ## Getting Started
 
-- I have an SPA template in my repos, but, if you'd like to use this for whatever reason, feel free to:
+- I have an SPA template in my repos, but, if you'd like to use this for whatever reason, feel free to: \
    `git clone https://github.com/0xcire/reactfolio.git reactfolio` \
    `cd reactfolio` \
    `npm install` \

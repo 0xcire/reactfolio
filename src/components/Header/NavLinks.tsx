@@ -1,6 +1,6 @@
 import { links } from '../../data/data';
 import { NavLink, useLocation } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type TNav = {
   isMobile: boolean;
@@ -34,7 +34,7 @@ function NavLinks({ isMobile, toggleMenu }: TNav) {
           <span className='relative px-4 py-2'>
             {link}
             {`/${link}` === path ? (
-              <m.div
+              <motion.div
                 className='absolute inset-0 z-[0] hidden rounded-md bg-neutral-400/[0.35]  sm:block'
                 layoutId='navlinks'
                 transition={{

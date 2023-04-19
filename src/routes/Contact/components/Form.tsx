@@ -83,7 +83,7 @@ function Form({ sendFormData }: TForm) {
         <input type='hidden' name='form-name' value='contact' />
         <HideOverflow>
           <m.div
-            className='relative my-3 flex flex-col md:my-0'
+            className='relative mt-3 flex flex-col md:my-0'
             variants={springReveal}
           >
             <Input

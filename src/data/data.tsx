@@ -8,9 +8,27 @@ import {
   PaperPlaneTilt,
 } from '@phosphor-icons/react';
 
+import {
+  SiHtml5,
+  SiCss3,
+  SiSass,
+  SiTailwindcss,
+  SiJavascript,
+  SiTypescript,
+  SiAstro,
+  SiReact,
+  SiReactrouter,
+  SiReacthookform,
+  SiVite,
+  SiVitest,
+  SiGithubactions,
+} from 'react-icons/si';
+
+import food_service from '@/assets/images/food_service.webp';
 import cardle from '@/assets/images/cardle.webp';
 import ecfolio from '@/assets/images/ecfolio.webp';
 import todo from '@/assets/images/todo.webp';
+// import { IconType } from 'react-icons';
 
 // ==============================================
 // COMMON
@@ -43,8 +61,8 @@ export const springReveal = {
 export const links: Array<string> = ['Portfolio', 'About', 'Contact'];
 
 export type ctaProps = {
-  icon: JSX.Element;
-  url?: string;
+  icon?: JSX.Element;
+  url: string;
   text?: string;
 };
 // ==============================================
@@ -86,7 +104,7 @@ export type projectlink = Record<projectLinks, ctaProps>;
 type project = {
   img: string;
   title: string;
-  stack: string;
+  stack: Array<JSX.Element>;
   description: string;
   links: projectlink;
 };
@@ -96,6 +114,8 @@ type folio = {
   headings: Record<headings, string>;
   projects: Array<project>;
 };
+
+// TODO: from other project references, appears I am importing Icons incorrectly. address. should be able to use <Icon /> in component
 export const folioData: folio = {
   headings: {
     heading: 'My Portfolio',
@@ -104,12 +124,42 @@ export const folioData: folio = {
   },
   projects: [
     {
+      img: food_service,
+      title: 'Food Service Demo',
+      stack: [
+        <SiAstro aria-describedby='tooltip-astro' key='astro-icon' />,
+        <SiSass key='sass-icon' />,
+        <SiGithubactions key='gh-icon' />,
+        <SiVite key='vite-icon' />,
+      ],
+      description:
+        'A figma design to working site implementation. Built with Astro and SCSS.',
+      links: {
+        code: {
+          icon: <Code size={20} />,
+          url: 'https://github.com/0xcire/food_service',
+        },
+        site: {
+          icon: <Browser size={20} />,
+          url: 'https://0xcire.github.io/food_service/',
+        },
+      },
+    },
+    {
       img: ecfolio,
       title: 'EcFolio',
-      stack:
-        'Tailwind | Framer Motion | TypeScript | React (Router) | Github Actions | Jest',
+      stack: [
+        <SiTailwindcss key='tw-icon' />,
+        <SiTypescript key='ts-icon' />,
+        <SiReact key='react-icon' />,
+        <SiReactrouter key='rr-icon' />,
+        <SiReacthookform key='rhf-icon' />,
+        <SiVitest key='vt-icon' />,
+        <SiGithubactions key='gh-icon' />,
+        <SiVite key='vite-icon' />,
+      ],
       description:
-        'The site you are on right now. Dove right into a more modern workflow and forced myself to learn via docs alone. Everything from Tailwind to Github Actions. Enjoyed not having to do everything from scratch.',
+        'This portfolio website. Built with Tailwind, React, TypeScript. Minimal CI/CD pipeline.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -124,9 +174,14 @@ export const folioData: folio = {
     {
       img: cardle,
       title: 'Cardle',
-      stack: 'HTML | CSS | JS | Web APIs | MVC',
+      stack: [
+        <SiHtml5 key='html-icon' />,
+        <SiCss3 key='css-icon' />,
+        <SiJavascript key='js-icon' />,
+        <SiVite key='vite-icon' />,
+      ],
       description:
-        'A simple Wordle/Worldle derivitive that prompts you to guess a car manufacturer. Used as additional practice for Vanilla JS concepts that would aid in transitioning to React easier. [WIP] - Full Stack implementation.',
+        'A Worldle inspired game that requires you to guess the car manufacturer.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -141,9 +196,14 @@ export const folioData: folio = {
     {
       img: todo,
       title: 'Todo App',
-      stack: 'HTML | CSS | JS | Web APIs | CRUD | MVC',
+      stack: [
+        <SiHtml5 key='html-icon' />,
+        <SiCss3 key='css-icon' />,
+        <SiJavascript key='js-icon' />,
+        <SiVite key='vite-icon' />,
+      ],
       description:
-        "Reactive todo app. Following an MVC pattern. Roughly inspired by Apple's reminders app. Implemented an intuitive UX that flows with user inputs. Basic CRUD fundamentals sans database.",
+        'Todo app focused on implementing intuitive UX, accessibility, and reactive UI updates.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -161,7 +221,7 @@ export const folioData: folio = {
 // ==============================================
 // ABOUT
 // ==============================================
-type skill = '.github' | 'client' | 'server';
+type skill = '.github' | 'client' | 'server' | 'db';
 export type skillTree = Record<skill, Array<string>>;
 type about = {
   heading: JSX.Element;
@@ -185,8 +245,18 @@ export const aboutData: about = {
   ],
   skills: {
     '.github': ['actions.yml'],
-    client: ['.html', '.css', '.sass', '.tailwind', '.js', '.ts', '.react'],
+    client: [
+      '.html',
+      '.css',
+      '.scss',
+      '.tailwind',
+      '.js',
+      '.ts',
+      '.react',
+      '.astro',
+    ],
     server: ['.node', '.express'],
+    db: ['.mongodb'],
   },
   cta: 'Get in touch',
 };

@@ -1,6 +1,6 @@
 import { links } from '../../data/data';
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 type TNav = {
   isMobile: boolean;
@@ -8,47 +8,46 @@ type TNav = {
 };
 
 function NavLinks({ isMobile, toggleMenu }: TNav) {
-  const navClassName = isMobile ? 'flex flex-col text-right mb-12' : 'flex';
-  const linkClassName = isMobile ? 'my-2 py-4 px-6 pr-0' : 'ml-12 px-0 py-2';
-  const githubLinkClassName = isMobile ? 'p-6' : 'mr-6';
-  const linkedinLinkClassName = isMobile ? 'p-6 pr-0' : '';
+  const path = useLocation().pathname;
+
+  const navClassName = isMobile
+    ? 'flex flex-col text-right mb-12'
+    : 'flex relative';
+  const linkClassName = isMobile
+    ? 'my-2 py-4 px-6 pr-0'
+    : 'ml-6 px-0 py-2 transition-all';
 
   return (
-    <>
-      <div className='flex items-center justify-end'>
-        <Link
-          className={githubLinkClassName}
-          to={`https://github.com/0xcire`}
-          target='_blank'
+    <nav className={navClassName}>
+      {links.map((link, index) => (
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? `${linkClassName} text-text-dark`
+              : `${linkClassName} text-slate-400 hover:text-text-dark`
+          }
+          key={index}
+          to={`/${link}`}
+          data-testid={!isMobile ? link : undefined}
+          onClick={isMobile ? toggleMenu : undefined}
         >
-          <GithubLogo size={26} />
-        </Link>
-        <Link
-          className={linkedinLinkClassName}
-          to={`https://www.linkedin.com/in/ericchi1/`}
-          target='_blank'
-        >
-          <LinkedinLogo size={26} />
-        </Link>
-      </div>
-      <nav className={navClassName}>
-        {links.map((link, index) => (
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? `${linkClassName} text-text-dark`
-                : `${linkClassName} text-slate-400`
-            }
-            key={index}
-            to={`/${link}`}
-            data-testid={!isMobile ? link : undefined}
-            onClick={isMobile ? toggleMenu : undefined}
-          >
+          <span className='relative px-4 py-2'>
             {link}
-          </NavLink>
-        ))}
-      </nav>
-    </>
+            {`/${link}` === path ? (
+              <motion.div
+                className='absolute inset-0 z-[0] hidden rounded-md bg-neutral-400/[0.35]  sm:block'
+                layoutId='navlinks'
+                transition={{
+                  type: 'spring',
+                  stiffness: 350,
+                  damping: 27,
+                }}
+              />
+            ) : null}
+          </span>
+        </NavLink>
+      ))}
+    </nav>
   );
 }
 

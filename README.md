@@ -25,6 +25,9 @@
 
 - Differences and benefits using TypeScript
 - React, implementing base functionality of something like Headless UI from scratch
+   - using useState, useEffect, useRef, useCallback hooks. No data so potential use of useContext was not needed. Excited to learn though!
+- Componentized architecture. Definitely a benefit over the client side vanilla MVC I was implementing before.
+- SPA architecture using React Router, shared layouts, etc
 - Creating various animations / page transitions with Framer Motion
 - Setting up forms with Netlify, validating data with Zod, utilizing toasts to notify users of success/error
 - Creating basic implementation tests using vitest/jest and react testing library
@@ -33,6 +36,8 @@
 ## Successes
 
 Picking up Tailwind, TypeScript, React was not very difficult due to the time spent getting comfortable with CSS and JS. Just building things and learning via docs and googling has been the most effective learning method for me so far.
+
+Obviously React is not the end all be all, but after creating a few projects from scratch with vanilla JS, absolutely loving the developer experience and makes me excited to build more. I have too many ideas...
 
 ## Issues
 

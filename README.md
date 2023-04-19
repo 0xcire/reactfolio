@@ -1,31 +1,34 @@
-# My Portfolio Website
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f7e71410-11cc-42d2-92a7-0a796c109e02/deploy-status)](https://app.netlify.com/sites/ecfolio/deploys)
 
-Visit [here](https://ecfolio.netlify.app/).
+# [My Portfolio Website](https://ecfolio.netlify.app/)
 
 ## Built with:
 
 - Tailwind CSS
 - Framer Motion
-
 - TypeScript / Zod
 - React / React Router / React Hook Form
 - Vitest / Jest / React Testing Library
-- - Github Actions to Netlify
+- Github Actions -> Netlify
+- ESLint
 
-### process
+## Learning Points
 
-After taking some extra time reacclimating myself with Vanilla JS / CSS, I decided to jump straight into a more modern workflow.
+- Differences and benefits using TypeScript
+- React, implementing base functionality of something like Headless UI from scratch
+- Creating various animations / page transitions with Framer Motion
+- Setting up forms with Netlify, validating data with Zod, utilizing toasts to notify users of success/error
+- Creating basic implementation tests using vitest/jest and react testing library
+- Creating a minimal CI/CD pipeline
 
-As someone who has been stuck in tutorial hell before, I tried avoiding them and just learning via docs and etc. I think my extra time spent with the underlying languages helped not feel so overwhelmed and pick up how abstractions are implemented, but there are probably some holes I need to go back and fill. Especially with TypeScript.
+## Successes?
 
-### issues?
+Picking up Tailwind, TypeScript, React was not very difficult due to the time spent getting comfortable with CSS and JS. Just building things and learning via docs and googling has been the most effective learning method for me so far.
 
-Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
+## issues?
 
-Testing was surprisingly hard to get right.
+Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like quirky mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
 
-I'm atrocious at picking colors.
+Some lack of understanding of react testing library led to some bugs that should have gone much smoother. At least I know what to do going forward now.
 
-Probably have some holes I need to fill with TypeScript and React and will take some courses alongside [Full Stack Open](https://fullstackopen.com/en/) while building, to tie everything together.
+I'm atrocious at picking colors. Excited to work with teams in the future where designs are handled so I can focus on the implementation.

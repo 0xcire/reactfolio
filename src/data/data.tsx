@@ -232,16 +232,16 @@ type about = {
 export const aboutData: about = {
   heading: (
     <>
-      I&apos;m Eric Chi, a Boston based <b>Front End Developer</b> open to
+      I&apos;m Eric Chi, a Boston based <b>Full Stack Developer</b> open to
       remote or relocation opportunities.
     </>
   ),
   paragraphs: [
-    'My stack of choice on the Front End is Tailwind, TypeScript, and React. The developer experience surrounding these technologies has been extremely enjoyable as of late. Especially coming from vanilla CSS and JavaScript. However, taking the time to learn the underlying technologies before the abstractions has made the transition easier, and I am confident I would be able to apply my skills to any tech stack if necessary.',
+    'Currently looking for first professional role. I have a passion for clean architecture and crafting scalable applications.',
 
-    'Even though I have been focusing on the front end, understanding how an entire app functions has been a large source of motivation for me and transitioning into a full stack, or even purely back end developer is a goal of mine. Finding a company that could facilitate such growth would be ideal.',
+    "My full-stack of choice is currently MERN stack. That being said, understanding core fundamentals is important to me and I always strive to learn the 'core' implementation before learning the abstraction. I.e. learning AWS deployment before using Vercel. JavaScript into React. Et cetera. And I am confident I could apply that knowledge to new technologies if necessary.",
 
-    'While not being completely engulfed in the tech world, you can find me in the gym, in nature,   or going for a drive in my car or motorcycle. Generally just trying to lead an active lifestyle.',
+    'While not being completely engulfed in the tech world, you can find me in the gym, in nature, or going for a drive in my car or motorcycle. Generally just trying to lead an active lifestyle.',
   ],
   skills: {
     '.github': ['actions.yml'],

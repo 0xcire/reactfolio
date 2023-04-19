@@ -12,6 +12,16 @@
 - Github Actions -> Netlify
 - ESLint
 
+## Getting Started
+
+- I have an SPA template in my repos, but, if you'd like to use this for whatever reason
+- feel free to \
+   `git clone https://github.com/0xcire/reactfolio.git reactfolio` \
+   `cd reactfolio` \
+   `npm install` \
+   `npm run dev`
+- keep in mind this site is an spa and your SEO will suffer if that is a necessity. Consider using Astro or Next.js for a more comprehensive solution.
+
 ## Learning Points
 
 - Differences and benefits using TypeScript
@@ -32,3 +42,7 @@ Definitely would have benefitted from a more robust CI CD pipeline for testing. 
 Some lack of understanding of react testing library led to some bugs that should have gone much smoother. At least I know what to do going forward now.
 
 I'm atrocious at picking colors. Excited to work with teams in the future where designs are handled so I can focus on the implementation.
+
+## Future Plans
+
+Have some blog post ideas, and to help my future site as much as possible with SEO, will be looking to refactor in Astro or Next.

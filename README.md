@@ -21,11 +21,11 @@
 - Creating basic implementation tests using vitest/jest and react testing library
 - Creating a minimal CI/CD pipeline
 
-## Successes?
+## Successes
 
 Picking up Tailwind, TypeScript, React was not very difficult due to the time spent getting comfortable with CSS and JS. Just building things and learning via docs and googling has been the most effective learning method for me so far.
 
-## issues?
+## Issues
 
 Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like quirky mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
 

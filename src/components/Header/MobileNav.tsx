@@ -56,7 +56,7 @@ function MobileNav() {
       </button>
       <AnimatePresence>
         {mobileMenuOpen && (
-          <LazyMotion features={domAnimation} strict>
+          <LazyMotion features={domAnimation}>
             <m.div
               ref={mobileRef}
               key='mobileMenu'

@@ -1,6 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { m, useMotionTemplate, useMotionValue } from 'framer-motion';
 
 import HideOverflow from '@/components/Layout/HideOverflow';
 import LinkBtn from '@/components/LinkBtn';
@@ -16,65 +15,40 @@ type CardProps = {
 };
 
 function ProjectCard({ image, title, stack, description, links }: CardProps) {
-  const [mousePosition, setmousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
-  const cardRef = useRef<HTMLDivElement>(null);
-  const gradientRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  useEffect(() => {
-    const card = cardRef?.current;
-    const rect = card?.getBoundingClientRect();
+  const handleMouseMove = (
+    currentTarget: HTMLDivElement,
+    clientX: number,
+    clientY: number
+  ) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
 
-    if (!rect) return;
-
-    const handleGradientShift = (e: MouseEvent) => {
-      setmousePosition({
-        x: e.clientX - rect?.left,
-        y: e.clientY - rect?.top,
-      });
-    };
-
-    const hideGradient = () => {
-      gradientRef.current?.classList.add('hidden');
-    };
-
-    const showGradient = () => {
-      gradientRef.current?.classList.remove('hidden');
-    };
-
-    card?.addEventListener('mouseenter', showGradient);
-    card?.addEventListener('mousemove', handleGradientShift);
-    card?.addEventListener('mouseleave', hideGradient);
-
-    return () => {
-      card?.removeEventListener('mouseenter', showGradient);
-      card?.removeEventListener('mousemove', handleGradientShift);
-      card?.removeEventListener('mouseleave', hideGradient);
-    };
-  });
-
-  const variants = {
-    default: {
-      x: mousePosition.x,
-      y: mousePosition.y,
-    },
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
   };
 
   return (
     <HideOverflow className='pt-6'>
       <m.div
-        className='relative mb-12 flex flex-col justify-between overflow-hidden rounded-md bg-[#0d1520]/[0.35] p-4 shadow-lg lg:my-0'
+        className='group relative mb-12 flex flex-col justify-between overflow-hidden rounded-md bg-[#0d1520]/[0.35] p-4 shadow-lg lg:my-0'
         variants={springReveal}
-        ref={cardRef}
+        onMouseMove={(e) =>
+          handleMouseMove(e.currentTarget, e.clientX, e.clientY)
+        }
       >
         <m.div
-          className='absolute -top-1/2 -left-1/2 z-[-10] hidden h-full w-full  rounded-full border-2 bg-[#18253a] blur-3xl'
-          ref={gradientRef}
-          transition={{ type: 'linear', duration: 0 }}
-          variants={variants}
-          animate='default'
+          className='pointer-events-none absolute -inset-px z-[-10] rounded-xl opacity-0 transition duration-200 group-hover:opacity-100'
+          style={{
+            background: useMotionTemplate`
+            radial-gradient(
+              450px circle at ${mouseX}px ${mouseY}px,
+              rgba(30, 46, 76, 0.8),
+              transparent 80%
+            )
+          `,
+          }}
         />
         <img
           className='h-full w-auto rounded-md xl:my-auto'

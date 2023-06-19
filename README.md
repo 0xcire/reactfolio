@@ -49,4 +49,5 @@ I'm atrocious at picking colors. Excited to work with teams in the future where 
 
 ## Future Plans
 
-Have some blog post ideas, and to help my future site as much as possible with SEO, will be looking to refactor in Astro or Next.
+- [] Refactor in Astro or Next
+  - Allow better SEO for some blog posts

@@ -8,27 +8,11 @@ import {
   PaperPlaneTilt,
 } from '@phosphor-icons/react';
 
-import {
-  SiHtml5,
-  SiCss3,
-  SiSass,
-  SiTailwindcss,
-  SiJavascript,
-  SiTypescript,
-  SiAstro,
-  SiReact,
-  SiReactrouter,
-  SiReacthookform,
-  SiVite,
-  SiVitest,
-  SiGithubactions,
-} from 'react-icons/si';
-
+import pokedex from '@/assets/images/pokedex.webp';
 import food_service from '@/assets/images/food_service.webp';
 import cardle from '@/assets/images/cardle.webp';
 import ecfolio from '@/assets/images/ecfolio.webp';
 import todo from '@/assets/images/todo.webp';
-// import { IconType } from 'react-icons';
 
 // ==============================================
 // COMMON
@@ -104,7 +88,6 @@ export type projectlink = Record<projectLinks, ctaProps>;
 type project = {
   img: string;
   title: string;
-  stack: Array<JSX.Element>;
   description: string;
   links: projectlink;
 };
@@ -124,16 +107,24 @@ export const folioData: folio = {
   },
   projects: [
     {
+      img: pokedex,
+      title: 'Pokedex Table',
+      description: 'A filterable, and paginated table for all pokemon.',
+      links: {
+        code: {
+          icon: <Code size={20} />,
+          url: 'https://github.com/0xcire/pokedex_problem',
+        },
+        site: {
+          icon: <Browser size={20} />,
+          url: 'https://0xcire.github.io/pokedex_problem/',
+        },
+      },
+    },
+    {
       img: food_service,
       title: 'Food Service Demo',
-      stack: [
-        <SiAstro aria-describedby='tooltip-astro' key='astro-icon' />,
-        <SiSass key='sass-icon' />,
-        <SiGithubactions key='gh-icon' />,
-        <SiVite key='vite-icon' />,
-      ],
-      description:
-        'A figma design to working site implementation. Built with Astro and SCSS.',
+      description: 'A figma design to working site implementation.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -148,18 +139,7 @@ export const folioData: folio = {
     {
       img: ecfolio,
       title: 'EcFolio',
-      stack: [
-        <SiTailwindcss key='tw-icon' />,
-        <SiTypescript key='ts-icon' />,
-        <SiReact key='react-icon' />,
-        <SiReactrouter key='rr-icon' />,
-        <SiReacthookform key='rhf-icon' />,
-        <SiVitest key='vt-icon' />,
-        <SiGithubactions key='gh-icon' />,
-        <SiVite key='vite-icon' />,
-      ],
-      description:
-        'This portfolio website. Built with Tailwind, React, TypeScript. Minimal CI/CD pipeline.',
+      description: 'The website you are on right now!',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -174,14 +154,7 @@ export const folioData: folio = {
     {
       img: cardle,
       title: 'Cardle',
-      stack: [
-        <SiHtml5 key='html-icon' />,
-        <SiCss3 key='css-icon' />,
-        <SiJavascript key='js-icon' />,
-        <SiVite key='vite-icon' />,
-      ],
-      description:
-        'A Worldle inspired game that requires you to guess the car manufacturer.',
+      description: 'Guess the car manufacturer.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -196,14 +169,7 @@ export const folioData: folio = {
     {
       img: todo,
       title: 'Todo App',
-      stack: [
-        <SiHtml5 key='html-icon' />,
-        <SiCss3 key='css-icon' />,
-        <SiJavascript key='js-icon' />,
-        <SiVite key='vite-icon' />,
-      ],
-      description:
-        'Todo app focused on implementing intuitive UX, accessibility, and reactive UI updates.',
+      description: 'Todo app focused on UX.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -256,7 +222,7 @@ export const aboutData: about = {
       '.astro',
     ],
     server: ['.node', '.express'],
-    db: ['.mongodb'],
+    db: ['.postgreSQL'],
   },
   cta: 'Get in touch',
 };

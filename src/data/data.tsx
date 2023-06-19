@@ -203,11 +203,13 @@ export const aboutData: about = {
     </>
   ),
   paragraphs: [
-    'Currently looking for first professional role. I have a passion for clean architecture and crafting scalable applications.',
+    'Currently looking for first professional role. I have a passion for clean architecture, crafting scalable applications and creating inuitive UX experiences.',
 
-    "My full-stack of choice is currently MERN stack. That being said, understanding core fundamentals is important to me and I always strive to learn the 'core' implementation before learning the abstraction. I.e. learning AWS deployment before using Vercel. JavaScript into React. Et cetera. And I am confident I could apply that knowledge to new technologies if necessary.",
+    'I am looking to join an environment that would allow myself to grow as a developer and learn how to be an effective contributor to said team.',
 
-    'While not being completely engulfed in the tech world, you can find me in the gym, in nature, or going for a drive in my car or motorcycle. Generally just trying to lead an active lifestyle.',
+    'My full-stack of choice is currently React, Node, Express, and Postgres. That being said, understanding core fundamentals is important to me and I am confident I could apply my knowledge and quick ability to learn to any tech stack if necessary.',
+
+    'While not being engulfed by the tech world, you can find me in the gym or in nature. Generally just trying to lead an active lifestyle.',
   ],
   skills: {
     '.github': ['actions.yml'],

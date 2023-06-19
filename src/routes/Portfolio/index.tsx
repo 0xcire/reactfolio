@@ -22,7 +22,6 @@ function Portfolio() {
             {heading}
           </m.h1>
         </HideOverflow>
-
         <HideOverflow className='mb-12'>
           <m.p
             className='overflow-hidden xl:text-[18px]'
@@ -31,16 +30,14 @@ function Portfolio() {
             {subheading}
           </m.p>
         </HideOverflow>
-
-        <div className='sm:mx-auto sm:w-8/12 lg:grid lg:w-full lg:grid-cols-2 lg:gap-8 xl:grid-cols-3'>
-          {projects.map((project, index) => (
+        <div className='grid grid-cols-2 gap-2'>
+          {projects.map(({ img, title, description, links }, index) => (
             <ProjectCard
               key={index}
-              image={project.img}
-              title={project.title}
-              stack={project.stack}
-              description={project.description}
-              links={project.links}
+              image={img}
+              title={title}
+              description={description}
+              links={links}
             />
           ))}
         </div>

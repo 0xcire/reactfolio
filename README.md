@@ -8,9 +8,8 @@
 - Framer Motion
 - TypeScript / Zod
 - React / React Router / React Hook Form
-- Vitest / Jest / React Testing Library
+- Vitest / React Testing Library
 - Github Actions -> Netlify
-- ESLint
 
 ## Getting Started
 
@@ -23,29 +22,29 @@
 
 ## Learning Points
 
-- Differences and benefits using TypeScript
+- Benefits of using TypeScript
 - React, implementing base functionality of something like Headless UI from scratch
-   - using useState, useEffect, useRef, useCallback hooks. No data so potential use of useContext was not needed. Excited to learn though!
-- Componentized architecture. Definitely a benefit over the client side vanilla MVC I was implementing before.
-- SPA architecture using React Router, shared layouts, etc
-- Creating various animations / page transitions with Framer Motion
-- Setting up forms with Netlify, validating data with Zod, utilizing toasts to notify users of success/error
-- Creating basic implementation tests using vitest/jest and react testing library
+  - using useState, useEffect, useRef, useCallback hooks
+- Componentized vs MVC architecture
+- React Router
+  - layout components
+  - creating SPA
+- Creating custom animations / page transitions with Framer Motion
+- Setting up forms with Netlify, validating data with Zod, utilizing toasts to notify users of success/error states
+- Creating basic implementation tests using vitest and react testing library
 - Creating a minimal CI/CD pipeline
 
 ## Successes
 
-Picking up Tailwind, TypeScript, React was not very difficult due to the time spent getting comfortable with CSS and JS. Just building things and learning via docs and googling has been the most effective learning method for me so far.
-
-Obviously React is not the end all be all, but after creating a few projects from scratch with vanilla JS, absolutely loving the developer experience and makes me excited to build more. I have too many ideas...
+- Picking up Tailwind, TypeScript, React was not very difficult due to the time spent getting comfortable with CSS and JS. Just building things and learning via docs and googling has been the most effective learning method for me so far.
 
 ## Issues
 
-Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like quirky mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
+- Definitely would have benefitted from a more robust CI CD pipeline for testing. Certain features like quirky mobile viewport values, testing connection to Netlify Forms would have gone much smoother.
 
-Some lack of understanding of react testing library led to some bugs that should have gone much smoother. At least I know what to do going forward now.
+- Had some trouble implementing tests at first
 
-I'm atrocious at picking colors. Excited to work with teams in the future where designs are handled so I can focus on the implementation.
+- Dealt with some vague bugs in setting up forms for Netlify
 
 ## Future Plans
 

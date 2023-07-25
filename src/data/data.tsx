@@ -113,11 +113,11 @@ export const folioData: folio = {
       links: {
         code: {
           icon: <Code size={20} />,
-          url: 'https://github.com/0xcire/pokedex_problem',
+          url: 'https://github.com/0xcire/pokedex-problem',
         },
         site: {
           icon: <Browser size={20} />,
-          url: 'https://0xcire.github.io/pokedex_problem/',
+          url: 'https://0xcire.github.io/pokedex-problem/',
         },
       },
     },
@@ -128,11 +128,11 @@ export const folioData: folio = {
       links: {
         code: {
           icon: <Code size={20} />,
-          url: 'https://github.com/0xcire/food_service',
+          url: 'https://github.com/0xcire/food-service',
         },
         site: {
           icon: <Browser size={20} />,
-          url: 'https://0xcire.github.io/food_service/',
+          url: 'https://0xcire.github.io/food-service/',
         },
       },
     },
@@ -158,11 +158,11 @@ export const folioData: folio = {
       links: {
         code: {
           icon: <Code size={20} />,
-          url: 'https://github.com/0xcire/new_cardle',
+          url: 'https://github.com/0xcire/new-cardle',
         },
         site: {
           icon: <Browser size={20} />,
-          url: 'https://0xcire.github.io/new_cardle/',
+          url: 'https://0xcire.github.io/new-cardle/',
         },
       },
     },
@@ -269,7 +269,7 @@ type form = {
   schema: Record<'name' | 'message', string>;
   noti: Record<'success' | 'error', string>;
   placeholder: Record<'name' | 'email' | 'message', string>;
-  cta: Pick<ctaProps, 'icon' | 'text'>;
+  cta: Omit<ctaProps, 'url'>;
 };
 export const formData: form = {
   schema: {

@@ -1,6 +1,7 @@
 import { links } from '../../data/data';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import clsx from 'clsx';
 
 type TNav = {
   isMobile: boolean;
@@ -10,21 +11,24 @@ type TNav = {
 function NavLinks({ isMobile, toggleMenu }: TNav) {
   const path = useLocation().pathname;
 
-  const navClassName = isMobile
-    ? 'flex flex-col text-right mb-12'
-    : 'flex relative';
-  const linkClassName = isMobile
-    ? 'my-2 py-4 px-6 pr-0'
-    : 'ml-6 px-0 py-2 transition-all';
-
   return (
-    <nav className={navClassName}>
+    <nav
+      className={clsx(
+        'flex',
+        isMobile && 'mb-12 flex-col text-right',
+        !isMobile && 'relative'
+      )}
+    >
       {links.map((link, index) => (
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? `${linkClassName} text-text-dark`
-              : `${linkClassName} text-slate-400 hover:text-text-dark`
+            clsx(
+              'transition-all',
+              isActive
+                ? 'text-text-dark'
+                : 'text-slate-400 hover:text-text-dark',
+              isMobile ? 'my-2 py-4 px-6 pr-0' : 'ml-6 px-0 py-2'
+            )
           }
           key={index}
           to={`/${link}`}

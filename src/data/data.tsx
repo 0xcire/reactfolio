@@ -169,7 +169,7 @@ export const folioData: folio = {
     {
       img: todo,
       title: 'Todo App',
-      description: 'Todo app focused on UX.',
+      description: 'Focused on managing multiple lists.',
       links: {
         code: {
           icon: <Code size={20} />,
@@ -203,7 +203,7 @@ export const aboutData: about = {
     </>
   ),
   paragraphs: [
-    'Currently looking for first professional role. I have a passion for clean architecture, crafting scalable applications and creating inuitive UX experiences.',
+    'Currently looking for first professional role. I have a passion for clean architecture, crafting scalable applications and creating intuitive UX experiences.',
 
     'I am looking to join an environment that would allow myself to grow as a developer and learn how to be an effective contributor to said team.',
 
@@ -218,8 +218,8 @@ export const aboutData: about = {
       '.css',
       '.scss',
       '.tailwind',
-      '.js',
-      '.ts',
+      '.javascript',
+      '.typescript',
       '.react',
       '.astro',
     ],

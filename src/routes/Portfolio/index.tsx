@@ -1,5 +1,7 @@
 import { m } from 'framer-motion';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+
 import TransitionContainer from '@/components/Layout/TransitionContainer';
 import HideOverflow from '@/components/Layout/HideOverflow';
 import ProjectCard from './components/ProjectCard';
@@ -9,6 +11,7 @@ import { folioData, springReveal } from '@/data/data';
 function Portfolio() {
   const { heading, subheading } = folioData.headings;
   const { projects } = folioData;
+  useDocumentTitle('Portfolio | ECFolio');
 
   return (
     <TransitionContainer>

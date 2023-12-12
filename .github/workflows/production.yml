@@ -7,6 +7,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 # actions
 jobs:
   build:

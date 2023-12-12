@@ -8,6 +8,7 @@ import {
   PaperPlaneTilt,
 } from '@phosphor-icons/react';
 
+import propel from '@/assets/images/propel.webp';
 import pokedex from '@/assets/images/pokedex.webp';
 import food_service from '@/assets/images/food_service.webp';
 import cardle from '@/assets/images/cardle.webp';
@@ -107,6 +108,21 @@ export const folioData: folio = {
   },
   projects: [
     {
+      img: propel,
+      title: 'Propel CRM',
+      description: 'A full stack Real Estate CRM.',
+      links: {
+        code: {
+          icon: <Code size={20} />,
+          url: 'https://github.com/0xcire/Propel-CRM',
+        },
+        site: {
+          icon: <Browser size={20} />,
+          url: 'https://propel-crm.xyz',
+        },
+      },
+    },
+    {
       img: pokedex,
       title: 'Pokedex Table',
       description: 'A filterable, and paginated table for all pokemon.',
@@ -187,7 +203,7 @@ export const folioData: folio = {
 // ==============================================
 // ABOUT
 // ==============================================
-type skill = '.github' | 'client' | 'server' | 'db';
+type skill = '.github' | 'client' | 'server' | 'db' | '.aws';
 export type skillTree = Record<skill, Array<string>>;
 type about = {
   heading: JSX.Element;
@@ -225,6 +241,7 @@ export const aboutData: about = {
     ],
     server: ['.node', '.express'],
     db: ['.postgreSQL'],
+    '.aws': ['.s3', '.cloudfront', '.IAM', '.ec2'],
   },
   cta: 'Get in touch',
 };

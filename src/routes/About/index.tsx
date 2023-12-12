@@ -47,7 +47,7 @@ function About() {
                 {cta}
               </LinkBtn>
               <a
-                href='../../../src/assets/docs/ec-resume.pdf'
+                href='../../../public/docs/ec-resume.pdf'
                 download
                 className='underline hover:text-slate-300'
               >

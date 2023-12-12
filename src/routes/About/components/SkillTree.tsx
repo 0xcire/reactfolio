@@ -12,9 +12,9 @@ type treeProps = {
 function SkillTree({ skills }: treeProps) {
   const skillKeys = Object.keys(skills);
   return (
-    <HideOverflow className='order-3'>
+    <HideOverflow className='col-start-2 col-end-5 row-start-2 row-end-7 mt-4 min-h-full md:mt-0'>
       <m.div
-        className='mt-8 w-6/12 md:mt-[52px] md:w-full'
+        className='w-6/12 md:mt-[18px] md:w-full'
         variants={springReveal}
         transition={{
           delayChildren: 0.15,

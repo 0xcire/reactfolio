@@ -1,6 +1,8 @@
 import { m } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+
 import Delay from '@/components/Layout/Delay';
 import HideOverflow from '@/components/Layout/HideOverflow';
 import TransitionContainer from '@/components/Layout/TransitionContainer';
@@ -11,6 +13,7 @@ import { homeData, springReveal } from '@/data/data';
 
 function Home() {
   const { heading, emoji, subheading, descriptors, cta } = homeData;
+  useDocumentTitle('Home | ECFolio');
   return (
     <TransitionContainer className='padding-x z-10 h-[calc(100svh-(theme(height.header)+theme(height.footer)))] bg-transparent'>
       <m.section
@@ -55,6 +58,17 @@ function Home() {
           >
             {cta}
           </LinkBtn>
+
+          {/* <motion.a
+            variants={springReveal}
+            whileHover={{ scale: 0.95 }}
+            whileTap={{ scale: 0.9 }}
+            className='home-cta mt-6 w-fit rounded-md bg-accent-dark px-5 py-2 text-text-light sm:mx-auto'
+            href='#'
+            download=''
+          >
+            Download Resume
+          </motion.a> */}
         </HideOverflow>
       </m.section>
 

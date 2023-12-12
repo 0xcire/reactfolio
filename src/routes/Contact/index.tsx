@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+
 import TransitionContainer from '@/components/Layout/TransitionContainer';
 import HideOverflow from '@/components/Layout/HideOverflow';
 import Form from './components/Form';
@@ -10,6 +12,7 @@ import { contactData, link as TLink, springReveal } from '@/data/data';
 
 function Contact() {
   const { heading, subheading, linksheading, links } = contactData;
+  useDocumentTitle('Contact | ECFolio');
 
   return (
     <TransitionContainer className='padding-x'>
